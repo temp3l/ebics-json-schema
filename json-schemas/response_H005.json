@@ -1,0 +1,204 @@
+{
+  "title": "./ebicsXML/ebics_response_H005.xsd",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "urn:org:ebics:H005",
+  "description": "[object Object],[object Object]",
+  "type": "object",
+  "properties": {
+    "annotation": {
+      "documentation": [
+        {
+          "@xml:lang": "de",
+          "#text": "Electronic Banking Internet Communication Standard des Zentralen Kreditausschusses (ZKA): Multibankfähige Schnittstelle zur internetbasierten Kommunikation."
+        },
+        {
+          "@xml:lang": "en",
+          "#text": "Electronic Banking Internet Communication Standard of the \"Zentraler Kreditausschuss (ZKA)\": multi-bank capable interface for internet-based communication."
+        }
+      ]
+    },
+    "ebicsResponse": {
+      "anyAttribute": {
+        "@namespace": "##targetNamespace",
+        "@processContents": "strict"
+      },
+      "properties": {
+        "header": {
+          "type": "object",
+          "description": "contains the mutable header entries.",
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "required": [
+                "static",
+                "mutable"
+              ],
+              "$ref": "#/definitions/AuthenticationMarker"
+            },
+            {
+              "properties": {
+                "static": {
+                  "description": "contains the static header entries.",
+                  "$ref": "#/definitions/ResponseStaticHeaderType"
+                },
+                "mutable": {
+                  "description": "contains the mutable header entries.",
+                  "$ref": "#/definitions/ResponseMutableHeaderType"
+                }
+              },
+              "required": [
+                "static",
+                "mutable"
+              ]
+            }
+          ]
+        },
+        "ebics:AuthSignature": {
+          "description": "Authentication signature.",
+          "$ref": "#/definitions/AuthSignature"
+        },
+        "body": {
+          "type": "object",
+          "description": "timestamp indicating the latest update of the bank parameters; may be set during initialisation phase only.",
+          "properties": {
+            "DataTransfer": {
+              "description": "Transfer of signature or order data; mandatory for downloads only.",
+              "$ref": "#/definitions/DataTransferResponseType"
+            },
+            "ReturnCode": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/ReturnCodeType"
+                },
+                {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/ReturnCodeType"
+                    },
+                    {
+                      "type": "string",
+                      "description": "order-related return code of the previous request.",
+                      "$ref": "#/definitions/AuthenticationMarker"
+                    }
+                  ],
+                  "additionalProperties": true,
+                  "description": "order-related return code of the previous request."
+                }
+              ],
+              "description": "order-related return code of the previous request."
+            },
+            "TimestampBankParameter": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/TimestampType"
+                },
+                {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/TimestampType"
+                    },
+                    {
+                      "type": "string",
+                      "description": "timestamp indicating the latest update of the bank parameters; may be set during initialisation phase only.",
+                      "$ref": "#/definitions/AuthenticationMarker"
+                    }
+                  ],
+                  "additionalProperties": true,
+                  "description": "timestamp indicating the latest update of the bank parameters; may be set during initialisation phase only."
+                }
+              ],
+              "description": "timestamp indicating the latest update of the bank parameters; may be set during initialisation phase only."
+            }
+          },
+          "required": [
+            "ReturnCode"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "header",
+        "ebics:AuthSignature",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "description": "Electronic Banking Internet Communication Standard of the \"Zentraler Kreditausschuss (ZKA)\": multi-bank capable interface for internet-based communication.",
+    "$ref": "#/definitions/VersionAttrGroup"
+  },
+  "required": [
+    "ebicsResponse"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "ResponseStaticHeaderType": {
+      "type": "object",
+      "description": "Total number of segments for this transaction; mandatory for downloads in initialisation phase only.",
+      "properties": {
+        "TransactionID": {
+          "description": "unique transaction ID, provided by the server if and only if the order attribute is set to either \"OZHNN\" or \"DZHNN\" and if a transaction has been established actually.",
+          "$ref": "#/definitions/TransactionIDType"
+        },
+        "NumSegments": {
+          "description": "Total number of segments for this transaction; mandatory for downloads in initialisation phase only.",
+          "$ref": "#/definitions/SegmentNumberType"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResponseMutableHeaderType": {
+      "type": "object",
+      "description": "Textual interpretation of the returned technical status code.",
+      "properties": {
+        "TransactionPhase": {
+          "description": "Current phase of the transaction; this information is provided by the client for each step of the transaction, and the server adopts the setting.",
+          "$ref": "#/definitions/TransactionPhaseType"
+        },
+        "SegmentNumber": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/SegmentNumberType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/SegmentNumberType"
+                },
+                {
+                  "type": "string",
+                  "description": "contains the number of the segment which is currently being transmitted or requested; mandatory for transaction phases 'Transfer' and (for downloads) 'Initialisation' only.",
+                  "required": [
+                    "lastSegment"
+                  ]
+                }
+              ],
+              "required": [
+                "lastSegment"
+              ],
+              "description": "Ist dies das letzte Segment der Übertragung?"
+            }
+          ],
+          "description": "Ist dies das letzte Segment der Übertragung?"
+        },
+        "OrderID": {
+          "description": "Auftragsnummer von Sendeaufträgen gemäß DFÜ-Abkommen.",
+          "$ref": "#/definitions/OrderIDType"
+        },
+        "ReturnCode": {
+          "description": "Return code indicating the technical status.",
+          "$ref": "#/definitions/ReturnCodeType"
+        },
+        "ReportText": {
+          "description": "Textual interpretation of the returned technical status code.",
+          "$ref": "#/definitions/ReportTextType"
+        }
+      },
+      "required": [
+        "TransactionPhase",
+        "ReturnCode",
+        "ReportText"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

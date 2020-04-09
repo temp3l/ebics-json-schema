@@ -1,0 +1,546 @@
+{
+  "title": "./ebicsXML/ebics_keymgmt_request_H005.xsd",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "urn:org:ebics:H005",
+  "description": "ebics_keymgmt_request_H005.xsd ist das EBICS-Protokollschema für Schlüsselmanagement-Anfragen (HIA, HPB, HSA, INI).",
+  "type": "object",
+  "properties": {
+    "annotation": {
+      "documentation": "Anfragestruktur für ungesicherte Auftragsarten HIA (Authentifikations- und Verschlüsselungsschlüssel senden) und INI (bankfachllichen Schlüssel senden)."
+    },
+    "ebicsUnsecuredRequest": {
+      "properties": {
+        "header": {
+          "type": "object",
+          "description": "enthält alle variablen Headereinträge.",
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "required": [
+                "static",
+                "mutable"
+              ],
+              "$ref": "#/definitions/AuthenticationMarker"
+            },
+            {
+              "properties": {
+                "static": {
+                  "description": "enhält alle festen Headereinträge.",
+                  "$ref": "#/definitions/UnsecuredRequestStaticHeaderType"
+                },
+                "mutable": {
+                  "description": "enthält alle variablen Headereinträge.",
+                  "$ref": "#/definitions/EmptyMutableHeaderType"
+                }
+              },
+              "required": [
+                "static",
+                "mutable"
+              ]
+            }
+          ]
+        },
+        "body": {
+          "type": "object",
+          "description": "Transfer von Auftragsdaten.",
+          "properties": {
+            "DataTransfer": {
+              "type": "object",
+              "description": "enthält Auftragsdaten.",
+              "properties": {
+                "OrderData": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/OrderDataType"
+                    },
+                    {
+                      "type": "string",
+                      "description": "enthält Auftragsdaten.",
+                      "required": [
+                        "DataTransfer"
+                      ]
+                    }
+                  ],
+                  "description": "Transfer von Auftragsdaten."
+                }
+              },
+              "required": [
+                "OrderData"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "DataTransfer"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "header",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "description": "Anfragestruktur für ungesicherte Auftragsarten HIA (Authentifikations- und Verschlüsselungsschlüssel senden) und INI (bankfachllichen Schlüssel senden).",
+    "$ref": "#/definitions/VersionAttrGroup"
+  },
+  "required": [
+    "ebicsUnsecuredRequest"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "StaticHeaderBaseType": {
+      "type": "object",
+      "description": "Angabe des Sicherheitsmediums, das der Kunde verwendet.",
+      "properties": {
+        "HostID": {
+          "description": "Hostname des Banksystems.",
+          "$ref": "#/definitions/HostIDType"
+        },
+        "Nonce": {
+          "description": "Zufallswert; damit wird die Initialisierungsnachricht des Clients einzigartig; nur anzugeben, falls Authentifikationssignatur vorhanden.",
+          "$ref": "#/definitions/NonceType"
+        },
+        "Timestamp": {
+          "description": "aktueller Zeitstempel zur Begrenzung der serverseitigen Nonce-Speicherung; nur anzugeben, falls Authentifikationssignatur vorhanden.",
+          "$ref": "#/definitions/TimestampType"
+        },
+        "PartnerID": {
+          "description": "Kunden-ID des serverseitig administrierten Kunden.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "Teilnehmer-ID des serverseitig zu diesem Kunden administrierten Teilnehmers.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "SystemID": {
+          "description": "technische User-ID für Multi-User-Systeme.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "Product": {
+          "description": "Kennung des Kundenprodukts bzw. Herstellerkennung oder Name.",
+          "$ref": "#/definitions/ProductElementType"
+        },
+        "OrderDetails": {
+          "description": "Auftragsdetails.",
+          "$ref": "#/definitions/OrderDetailsType"
+        },
+        "SecurityMedium": {
+          "description": "Angabe des Sicherheitsmediums, das der Kunde verwendet.",
+          "$ref": "#/definitions/SecurityMediumType"
+        }
+      },
+      "required": [
+        "HostID",
+        "PartnerID",
+        "UserID",
+        "OrderDetails",
+        "SecurityMedium"
+      ],
+      "additionalProperties": true
+    },
+    "OrderDetailsType": {
+      "type": "object",
+      "description": "Auftragsart.",
+      "properties": {
+        "AdminOrderType": {
+          "description": "Auftragsart.",
+          "$ref": "#/definitions/OrderTBaseType"
+        }
+      },
+      "required": [
+        "AdminOrderType"
+      ],
+      "additionalProperties": false
+    },
+    "ProductElementType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ProductType"
+        },
+        {
+          "type": "object",
+          "description": "Kennung des Herausgebers des Kundenprodukts bzw. des betreuenden Kreditinstituts.",
+          "properties": {
+            "Language": {
+              "description": "Sprachkennzeichen der Kundenproduktversion (gemäß ISO 639).",
+              "$ref": "#/definitions/LanguageType"
+            },
+            "InstituteID": {
+              "description": "Kennung des Herausgebers des Kundenprodukts bzw. des betreuenden Kreditinstituts.",
+              "$ref": "#/definitions/InstituteIDType"
+            }
+          },
+          "required": [
+            "Language"
+          ],
+          "additionalProperties": true,
+          "$ref": "#/definitions/InstituteIDType"
+        }
+      ],
+      "description": "Kennung des Herausgebers des Kundenprodukts bzw. des betreuenden Kreditinstituts."
+    },
+    "EmptyMutableHeaderType": {
+      "type": "string",
+      "description": "Datentyp für den leeren variablen EBICS-Header von Key Managemen Aufträgen."
+    },
+    "UnsecuredRequestStaticHeaderType": {
+      "type": "object",
+      "description": "Angabe des Sicherheitsmediums, das der Kunde verwendet.",
+      "properties": {
+        "HostID": {
+          "description": "Hostname des Banksystems.",
+          "$ref": "#/definitions/HostIDType"
+        },
+        "Nonce": {
+          "description": "Zufallswert; damit wird die Initialisierungsnachricht des Clients einzigartig; nicht anzugeben für ebicsUnsecuredRequest.",
+          "$ref": "#/definitions/NonceType"
+        },
+        "Timestamp": {
+          "description": "aktueller Zeitstempel zur Begrenzung der serverseitigen Nonce-Speicherung; nicht anzugeben für ebicsUnsecuredRequest.",
+          "$ref": "#/definitions/TimestampType"
+        },
+        "PartnerID": {
+          "description": "Kunden-ID des serverseitig administrierten Kunden.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "Teilnehmer-ID des serverseitig zu diesem Kunden administrierten Teilnehmers.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "SystemID": {
+          "description": "technische User-ID für Multi-User-Systeme.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "Product": {
+          "description": "Kennung des Kundenprodukts bzw. Herstellerkennung oder Name.",
+          "$ref": "#/definitions/ProductElementType"
+        },
+        "OrderDetails": {
+          "description": "Auftragsdetails.",
+          "$ref": "#/definitions/UnsecuredReqOrderDetailsType"
+        },
+        "SecurityMedium": {
+          "description": "Angabe des Sicherheitsmediums, das der Kunde verwendet.",
+          "$ref": "#/definitions/SecurityMediumType"
+        }
+      },
+      "required": [
+        "HostID",
+        "PartnerID",
+        "UserID",
+        "OrderDetails",
+        "SecurityMedium"
+      ],
+      "additionalProperties": true
+    },
+    "UnsecuredReqOrderDetailsType": {
+      "type": "object",
+      "description": "Auftragsart.",
+      "properties": {
+        "AdminOrderType": {
+          "description": "Auftragsart.",
+          "$ref": "#/definitions/OrderTBaseType"
+        }
+      },
+      "required": [
+        "AdminOrderType"
+      ],
+      "additionalProperties": false
+    },
+    "NoPubKeyDigestsRequestStaticHeaderType": {
+      "type": "object",
+      "description": "Angabe des Sicherheitsmediums, das der Kunde verwendet.",
+      "properties": {
+        "HostID": {
+          "description": "Hostname des Banksystems.",
+          "$ref": "#/definitions/HostIDType"
+        },
+        "Nonce": {
+          "description": "Zufallswert; damit wird die Initialisierungsnachricht des Clients einzigartig.",
+          "$ref": "#/definitions/NonceType"
+        },
+        "Timestamp": {
+          "description": "aktueller Zeitstempel zur Begrenzung der serverseitigen Nonce-Speicherung.",
+          "$ref": "#/definitions/TimestampType"
+        },
+        "PartnerID": {
+          "description": "Kunden-ID des serverseitig administrierten Kunden.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "Teilnehmer-ID des serverseitig zu diesem Kunden administrierten Teilnehmers.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "SystemID": {
+          "description": "technische User-ID für Multi-User-Systeme.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "Product": {
+          "description": "Kennung des Kundenprodukts bzw. Herstellerkennung oder Name.",
+          "$ref": "#/definitions/ProductElementType"
+        },
+        "OrderDetails": {
+          "description": "Auftragsdetails.",
+          "$ref": "#/definitions/NoPubKeyDigestsReqOrderDetailsType"
+        },
+        "SecurityMedium": {
+          "description": "Angabe des Sicherheitsmediums, das der Kunde verwendet.",
+          "$ref": "#/definitions/SecurityMediumType"
+        }
+      },
+      "required": [
+        "HostID",
+        "Nonce",
+        "Timestamp",
+        "PartnerID",
+        "UserID",
+        "OrderDetails",
+        "SecurityMedium"
+      ],
+      "additionalProperties": true
+    },
+    "NoPubKeyDigestsReqOrderDetailsType": {
+      "type": "object",
+      "description": "Auftragsart.",
+      "properties": {
+        "AdminOrderType": {
+          "description": "Auftragsart.",
+          "$ref": "#/definitions/OrderTBaseType"
+        }
+      },
+      "required": [
+        "AdminOrderType"
+      ],
+      "additionalProperties": false
+    },
+    "UnsignedRequestStaticHeaderType": {
+      "type": "object",
+      "description": "Angabe des Sicherheitsmediums, das der Kunde verwendet.",
+      "properties": {
+        "HostID": {
+          "description": "Hostname des Banksystems.",
+          "$ref": "#/definitions/HostIDType"
+        },
+        "Nonce": {
+          "description": "Zufallswert; damit wird die Initialisierungsnachricht des Clients einzigartig; nicht anzugeben bei ebicsUnsignedRequest.",
+          "$ref": "#/definitions/NonceType"
+        },
+        "Timestamp": {
+          "description": "aktueller Zeitstempel zur Begrenzung der serverseitigen Nonce-Speicherung; nicht anzugeben bei ebicsUnsignedRequest.",
+          "$ref": "#/definitions/TimestampType"
+        },
+        "PartnerID": {
+          "description": "Kunden-ID des serverseitig administrierten Kunden.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "Teilnehmer-ID des serverseitig zu diesem Kunden administrierten Teilnehmers.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "SystemID": {
+          "description": "technische User-ID für Multi-User-Systeme.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "Product": {
+          "description": "Kennung des Kundenprodukts bzw. Herstellerkennung oder Name.",
+          "$ref": "#/definitions/ProductElementType"
+        },
+        "OrderDetails": {
+          "description": "Auftragsdetails.",
+          "$ref": "#/definitions/UnsignedReqOrderDetailsType"
+        },
+        "SecurityMedium": {
+          "description": "Angabe des Sicherheitsmediums, das der Kunde verwendet.",
+          "$ref": "#/definitions/SecurityMediumType"
+        }
+      },
+      "required": [
+        "HostID",
+        "PartnerID",
+        "UserID",
+        "OrderDetails",
+        "SecurityMedium"
+      ],
+      "additionalProperties": true
+    },
+    "UnsignedReqOrderDetailsType": {
+      "type": "object",
+      "description": "Auftragsart.",
+      "properties": {
+        "AdminOrderType": {
+          "description": "Auftragsart.",
+          "$ref": "#/definitions/OrderTBaseType"
+        }
+      },
+      "required": [
+        "AdminOrderType"
+      ],
+      "additionalProperties": false
+    },
+    "ebicsNoPubKeyDigestsRequest": {
+      "type": "object",
+      "description": "enthält optionale Zertifikate (vorgesehen).",
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "header",
+            "ebics:AuthSignature",
+            "body"
+          ],
+          "$ref": "#/definitions/VersionAttrGroup"
+        },
+        {
+          "properties": {
+            "header": {
+              "type": "object",
+              "description": "enthält alle variablen Headereinträge.",
+              "properties": {
+                "static": {
+                  "description": "enhält alle festen Headereinträge.",
+                  "$ref": "#/definitions/NoPubKeyDigestsRequestStaticHeaderType"
+                },
+                "mutable": {
+                  "description": "enthält alle variablen Headereinträge.",
+                  "$ref": "#/definitions/EmptyMutableHeaderType"
+                }
+              },
+              "required": [
+                "static",
+                "mutable"
+              ],
+              "additionalProperties": false
+            },
+            "ebics:AuthSignature": {
+              "description": "Authentifikationssignatur.",
+              "$ref": "#/definitions/AuthSignature"
+            },
+            "body": {
+              "type": "object",
+              "description": "X.509-Daten des Teilnehmers.",
+              "properties": {
+                "ds:X509Data": {
+                  "description": "X.509-Daten des Teilnehmers.",
+                  "$ref": "ds.json#/definitions/X509Data"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "header",
+            "ebics:AuthSignature",
+            "body"
+          ]
+        }
+      ]
+    },
+    "ebicsUnsignedRequest": {
+      "type": "object",
+      "description": "Contains the order data and the ESs.",
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "header",
+            "body"
+          ],
+          "$ref": "#/definitions/VersionAttrGroup"
+        },
+        {
+          "properties": {
+            "header": {
+              "type": "object",
+              "description": "Contains all mutable header entries.",
+              "properties": {
+                "static": {
+                  "description": "Contains all fixed header entries.",
+                  "$ref": "#/definitions/UnsignedRequestStaticHeaderType"
+                },
+                "mutable": {
+                  "description": "Contains all mutable header entries.",
+                  "$ref": "#/definitions/EmptyMutableHeaderType"
+                }
+              },
+              "required": [
+                "static",
+                "mutable"
+              ],
+              "additionalProperties": false
+            },
+            "body": {
+              "type": "object",
+              "description": "Transfer of order data and the ESs.",
+              "properties": {
+                "DataTransfer": {
+                  "type": "object",
+                  "description": "Contains the order data",
+                  "properties": {
+                    "SignatureData": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/SignatureDataType"
+                        },
+                        {
+                          "allOf": [
+                            {
+                              "$ref": "#/definitions/SignatureDataType"
+                            },
+                            {
+                              "type": "string",
+                              "description": "Contains the ESs."
+                            }
+                          ],
+                          "description": "Contains the ESs."
+                        }
+                      ],
+                      "description": "Contains the ESs."
+                    },
+                    "OrderData": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/OrderDataType"
+                        },
+                        {
+                          "allOf": [
+                            {
+                              "$ref": "#/definitions/OrderDataType"
+                            },
+                            {
+                              "type": "string",
+                              "description": "Contains the order data"
+                            }
+                          ],
+                          "required": [
+                            "DataTransfer"
+                          ],
+                          "description": "Contains the order data"
+                        }
+                      ],
+                      "description": "Transfer of order data and the ESs."
+                    }
+                  },
+                  "required": [
+                    "SignatureData",
+                    "OrderData"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "DataTransfer"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "header",
+            "body"
+          ]
+        }
+      ]
+    }
+  }
+}

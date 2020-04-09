@@ -1,0 +1,2006 @@
+{
+  "title": "./ebicsXML/ebics_orders_H005.xsd",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "urn:org:ebics:H005",
+  "description": "[object Object],[object Object]",
+  "type": "object",
+  "properties": {
+    "@abstract": "true",
+    "annotation": {
+      "documentation": [
+        {
+          "@xml:lang": "de",
+          "#text": "XML-Klartext-Auftragsdaten für neue EBICS-Auftragsarten."
+        },
+        {
+          "@xml:lang": "en",
+          "#text": "Order data in XML format for new EBICS order types."
+        }
+      ]
+    }
+  },
+  "required": [
+    "EBICSOrderData"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "HAAResponseOrderData": {
+      "description": "Order data for order type HAA (response: receive downloadable order types).",
+      "$ref": "#/definitions/HAAResponseOrderDataType"
+    },
+    "HCARequestOrderData": {
+      "description": "Order data for order type HCA (request: replace user's keys for authentication and encryption).",
+      "$ref": "#/definitions/HCARequestOrderDataType"
+    },
+    "HCSRequestOrderData": {
+      "description": "Order data for order type HCS (request: replace all keys).",
+      "$ref": "#/definitions/HCSRequestOrderDataType"
+    },
+    "HIARequestOrderData": {
+      "description": "Order data for order type HIA (request: initialise user's keys for authentication and encryption).",
+      "$ref": "#/definitions/HIARequestOrderDataType"
+    },
+    "H3KRequestOrderData": {
+      "description": "Order data for order type H3K (request: initialise all three user's keys).",
+      "$ref": "#/definitions/H3KRequestOrderDataType"
+    },
+    "HKDResponseOrderData": {
+      "description": "Order data for order type HKD (response: receive customer-based information on the customer and the customer's users).",
+      "$ref": "#/definitions/HKDResponseOrderDataType"
+    },
+    "HKDAccountKey": {
+      "type": "string",
+      "description": "Key for the identification of the account."
+    },
+    "HKDAccountRef": {
+      "type": "string",
+      "description": "Reference to the account identification keys."
+    },
+    "HPBResponseOrderData": {
+      "description": "Order data for order type HPB (response: receive bank's public keys).",
+      "$ref": "#/definitions/HPBResponseOrderDataType"
+    },
+    "HPDResponseOrderData": {
+      "description": "Order data for order type HPD (response: receive bank parameters).",
+      "$ref": "#/definitions/HPDResponseOrderDataType"
+    },
+    "HTDResponseOrderData": {
+      "description": "Order data for order type HTD (response: receive user-based information on the user's customer and the user herself/himself).",
+      "$ref": "#/definitions/HTDReponseOrderDataType"
+    },
+    "HTDAccountKey": {
+      "type": "string",
+      "description": "Key for the identification of the account."
+    },
+    "HTDAccountRef": {
+      "type": "string",
+      "description": "Reference to the account identification keys."
+    },
+    "HVDResponseOrderData": {
+      "description": "Order data for order type HVD (response: receive the status of an order currently stored in the distributed signature processing unit).",
+      "$ref": "#/definitions/HVDResponseOrderDataType"
+    },
+    "HVSRequestOrderData": {
+      "description": "Order data for order type HVS (request: reject an order currently stored in the distributed signature processing unit).",
+      "$ref": "#/definitions/HVSRequestOrderDataType"
+    },
+    "HVTResponseOrderData": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/HVTResponseOrderDataType"
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/definitions/HVTResponseOrderDataType"
+            },
+            {
+              "type": "string",
+              "description": "Order data for order type HVT (response: receive transaction details of an order currently stored in the distributed signature processing unit)."
+            }
+          ],
+          "description": "Order data for order type HVT (response: receive transaction details of an order currently stored in the distributed signature processing unit)."
+        }
+      ],
+      "description": "Order data for order type HVT (response: receive transaction details of an order currently stored in the distributed signature processing unit)."
+    },
+    "HVUResponseOrderData": {
+      "description": "Order data for order type HVU (response: receive summary of orders currently stored in the distributed signature processing unit).",
+      "$ref": "#/definitions/HVUResponseOrderDataType"
+    },
+    "HVZResponseOrderData": {
+      "description": "Order data for order type HVZ (response: receive summary of orders currently stored in the distributed signature processing unit with additional information).",
+      "$ref": "#/definitions/HVZResponseOrderDataType"
+    },
+    "EBICSSignatureData": {
+      "type": "string",
+      "description": "contains the digital signatures."
+    },
+    "BankSignatureData": {
+      "description": "contains the digital signatures.",
+      "$ref": "#/definitions/BankSignatureDataSigBookType"
+    },
+    "OrderParams": {
+      "type": "string",
+      "description": "additional order parameters required to execute the order."
+    },
+    "HVDOrderParams": {
+      "description": "additional order parameters for order type HVD.",
+      "$ref": "#/definitions/HVDOrderParamsType"
+    },
+    "HVEOrderParams": {
+      "description": "additional order parameters for order type HVE.",
+      "$ref": "#/definitions/HVEOrderParamsType"
+    },
+    "HVSOrderParams": {
+      "description": "additional order parameters for order type HVS.",
+      "$ref": "#/definitions/HVSOrderParamsType"
+    },
+    "HVTOrderParams": {
+      "description": "additional order parameters for order type HVT.",
+      "$ref": "#/definitions/HVTOrderParamsType"
+    },
+    "HVUOrderParams": {
+      "description": "additional order parameters for order type HVU.",
+      "$ref": "#/definitions/HVUOrderParamsType"
+    },
+    "HVZOrderParams": {
+      "description": "additional order parameters for order type HVZ.",
+      "$ref": "#/definitions/HVZOrderParamsType"
+    },
+    "StandardOrderParams": {
+      "description": "additional order parameters for standard order types.",
+      "$ref": "#/definitions/StandardOrderParamsType"
+    },
+    "BTDOrderParams": {
+      "description": "additional order parameters for order type BTD.",
+      "$ref": "#/definitions/BTDParamsType"
+    },
+    "BTUOrderParams": {
+      "description": "additional order parameters for order type BTU.",
+      "$ref": "#/definitions/BTUParamsType"
+    },
+    "HVRequestStructure": {
+      "type": "object",
+      "description": "Order ID of the selected order.",
+      "properties": {
+        "PartnerID": {
+          "description": "Customer ID of the presenter of the selected order.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "Service": {
+          "description": "Identification of the file format in the case of FUL/FDL",
+          "$ref": "#/definitions/RestrictedServiceType"
+        },
+        "OrderID": {
+          "description": "Order ID of the selected order.",
+          "$ref": "#/definitions/OrderIDType"
+        }
+      },
+      "required": [
+        "PartnerID",
+        "Service",
+        "OrderID"
+      ],
+      "additionalProperties": false
+    },
+    "HVZPaymentOrderDetailsStructure": {
+      "type": "object",
+      "description": "Order details from display file for first logical file.",
+      "properties": {
+        "TotalOrders": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total transaction number for all logical files (from dispay file)."
+        },
+        "TotalAmount": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/AmountValueType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/AmountValueType"
+                },
+                {
+                  "type": "string",
+                  "description": "Total transaction amount for all logical files (from dispay file)."
+                }
+              ],
+              "description": "Nur Gutschriften (isCredit = \"true\") oder nur Lastschriften (isCredit = \"false\")? Sonst keine Nutzung des Elements."
+            }
+          ],
+          "description": "Nur Gutschriften (isCredit = \"true\") oder nur Lastschriften (isCredit = \"false\")? Sonst keine Nutzung des Elements."
+        },
+        "Currency": {
+          "description": "Order currency (only if identical across all transactions, ship otherwise).",
+          "$ref": "#/definitions/CurrencyBaseType"
+        },
+        "FirstOrderInfo": {
+          "type": "object",
+          "description": "First order party account (from display file).",
+          "properties": {
+            "OrderPartyInfo": {
+              "type": "string",
+              "description": "Order party information (from display file)."
+            },
+            "AccountInfo": {
+              "type": "object",
+              "description": "Bank sort code in free format.",
+              "properties": {
+                "AccountNumber": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/AccountNumberType"
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/AccountNumberType"
+                        },
+                        {
+                          "type": "string",
+                          "description": "Account number (German format or international as IBAN)."
+                        }
+                      ],
+                      "description": "Account number given in German format (international=false) or in international format (international=true, IBAN)?"
+                    }
+                  ],
+                  "description": "Account number given in German format (international=false) or in international format (international=true, IBAN)?"
+                },
+                "NationalAccountNumber": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/NationalAccountNumberType"
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/NationalAccountNumberType"
+                        },
+                        {
+                          "type": "string",
+                          "description": "Account number in free format.",
+                          "required": [
+                            "format"
+                          ]
+                        }
+                      ],
+                      "required": [
+                        "format",
+                        "AccountNumber",
+                        "NationalAccountNumber"
+                      ],
+                      "description": "Format type."
+                    }
+                  ],
+                  "description": "Account number in free format."
+                },
+                "BankCode": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/BankCodeType"
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/BankCodeType"
+                        },
+                        {
+                          "type": "string",
+                          "description": "Bank sort code (German format or international as SWIFT-BIC).",
+                          "$ref": "#/definitions/BankCodePrefixType"
+                        }
+                      ],
+                      "description": "National prefix for bank sort code.",
+                      "$ref": "#/definitions/BankCodePrefixType"
+                    }
+                  ],
+                  "description": "National prefix for bank sort code."
+                },
+                "NationalBankCode": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/NationalBankCodeType"
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/NationalBankCodeType"
+                        },
+                        {
+                          "type": "string",
+                          "description": "Bank sort code in free format.",
+                          "required": [
+                            "format"
+                          ]
+                        }
+                      ],
+                      "required": [
+                        "format",
+                        "BankCode",
+                        "NationalBankCode"
+                      ],
+                      "description": "Format type."
+                    }
+                  ],
+                  "description": "Bank sort code in free format."
+                }
+              },
+              "required": [
+                "AccountNumber",
+                "NationalAccountNumber",
+                "BankCode",
+                "NationalBankCode"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "AuthenticationMarker": {
+      "type": "object",
+      "description": "The element (and its substructures) that belongs to this attribute is to be authenticated.",
+      "properties": {
+        "authenticate": {
+          "type": "boolean",
+          "description": "The element (and its substructures) that belongs to this attribute is to be authenticated."
+        }
+      },
+      "required": [
+        "authenticate"
+      ],
+      "additionalProperties": false
+    },
+    "OptSupportFlag": {
+      "type": "object",
+      "description": "Is this function supported?",
+      "properties": {
+        "supported": {
+          "type": "boolean",
+          "description": "Is this function supported?"
+        }
+      },
+      "additionalProperties": true
+    },
+    "SignerPermission": {
+      "type": "object",
+      "description": "Authorisation level of the user that signed the order.",
+      "properties": {
+        "AuthorisationLevel": {
+          "description": "Authorisation level of the user that signed the order.",
+          "$ref": "#/definitions/AuthorisationLevelType"
+        }
+      },
+      "required": [
+        "AuthorisationLevel"
+      ],
+      "additionalProperties": true
+    },
+    "VersionAttrGroup": {
+      "type": "object",
+      "description": "Revision of the EBICS protocol (e.g. 1).",
+      "properties": {
+        "Version": {
+          "description": "Version of the EBICS protocol (e.g. \"H00x\").",
+          "$ref": "#/definitions/ProtocolVersionType"
+        },
+        "Revision": {
+          "description": "Revision of the EBICS protocol (e.g. 1).",
+          "$ref": "#/definitions/ProtocolRevisionType"
+        }
+      },
+      "required": [
+        "Version"
+      ],
+      "additionalProperties": false
+    },
+    "BankSignatureDataSigBookType": {
+      "type": "object",
+      "description": "Digital signature (either autorising an order or applied for transportation).",
+      "properties": {
+        "OrderSignature": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/SignatureType"
+            },
+            {
+              "type": "string",
+              "description": "Digital signature (either autorising an order or applied for transportation)."
+            }
+          ],
+          "description": "Digital signature (either autorising an order or applied for transportation)."
+        }
+      },
+      "additionalProperties": true
+    },
+    "PreValidationRequestType": {
+      "type": "object",
+      "description": "Account information for authorisation checks for the payment order within the prevalidation.",
+      "properties": {
+        "DataDigest": {
+          "type": "array",
+          "items": {
+            "description": "Hashvalue of the transmitted order data for the prevalidation.",
+            "$ref": "#/definitions/DataDigestType"
+          }
+        },
+        "AccountAuthorisation": {
+          "type": "array",
+          "items": {
+            "description": "Account information for authorisation checks for the payment order within the prevalidation.",
+            "$ref": "#/definitions/PreValidationAccountAuthType"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "PreValidationAccountAuthType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AccountType"
+        },
+        {
+          "type": "object",
+          "description": "Total sum of the ordered payments regarding this account in order to check the maximum amount limit of the signature permission grades.",
+          "properties": {
+            "Amount": {
+              "description": "Total sum of the ordered payments regarding this account in order to check the maximum amount limit of the signature permission grades.",
+              "$ref": "#/definitions/AmountType"
+            }
+          },
+          "additionalProperties": true,
+          "$ref": "#/definitions/AmountType"
+        }
+      ],
+      "description": "Total sum of the ordered payments regarding this account in order to check the maximum amount limit of the signature permission grades."
+    },
+    "DataTransferRequestType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/OrderDataType"
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/definitions/OrderDataType"
+            },
+            {
+              "type": "object",
+              "description": "Additional Information about the order (unstructured, up to 255 characters).",
+              "properties": {
+                "DataEncryptionInfo": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/DataEncryptionInfoType"
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/DataEncryptionInfoType"
+                        },
+                        {
+                          "type": "string",
+                          "description": "Information regarding the encryption of signature and order data."
+                        }
+                      ],
+                      "description": "Information regarding the encryption of signature and order data."
+                    }
+                  ],
+                  "description": "Information regarding the encryption of signature and order data."
+                },
+                "SignatureData": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/SignatureDataType"
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/SignatureDataType"
+                        },
+                        {
+                          "type": "string",
+                          "description": "contains signature data (ESs)."
+                        }
+                      ],
+                      "description": "contains signature data (ESs)."
+                    }
+                  ],
+                  "description": "contains signature data (ESs)."
+                },
+                "DataDigest": {
+                  "description": "Hashwert der Auftragsdaten.",
+                  "$ref": "#/definitions/DataDigestType"
+                },
+                "AdditionalOrderInfo": {
+                  "description": "Additional Information about the order (unstructured, up to 255 characters).",
+                  "$ref": "#/definitions/String255Type"
+                }
+              },
+              "required": [
+                "DataEncryptionInfo",
+                "SignatureData",
+                "DataDigest",
+                "OrderData"
+              ],
+              "additionalProperties": true,
+              "$ref": "#/definitions/String255Type"
+            }
+          ],
+          "required": [
+            "OrderData"
+          ],
+          "description": "Additional Information about the order (unstructured, up to 255 characters)."
+        }
+      ],
+      "description": "contains order data."
+    },
+    "DataTransferResponseType": {
+      "type": "object",
+      "description": "contains order data.",
+      "properties": {
+        "DataEncryptionInfo": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/DataEncryptionInfoType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/DataEncryptionInfoType"
+                },
+                {
+                  "type": "string",
+                  "description": "Information regarding the encryption of signature and order data."
+                }
+              ],
+              "description": "Information regarding the encryption of signature and order data."
+            }
+          ],
+          "description": "Information regarding the encryption of signature and order data."
+        },
+        "SignatureData": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/SignatureDataType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/SignatureDataType"
+                },
+                {
+                  "type": "string",
+                  "description": "contains signature data (ESs)."
+                }
+              ],
+              "description": "contains signature data (ESs)."
+            }
+          ],
+          "description": "contains signature data (ESs)."
+        },
+        "OrderData": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/OrderDataType"
+            },
+            {
+              "type": "string",
+              "description": "contains order data."
+            }
+          ],
+          "description": "contains order data."
+        }
+      },
+      "required": [
+        "DataEncryptionInfo",
+        "OrderData"
+      ],
+      "additionalProperties": true
+    },
+    "TransferReceiptRequestType": {
+      "type": "object",
+      "description": "Receipt code fpr transfer of order data.",
+      "properties": {
+        "ReceiptCode": {
+          "description": "Receipt code fpr transfer of order data.",
+          "$ref": "#/definitions/ReceiptCodeType"
+        }
+      },
+      "required": [
+        "ReceiptCode"
+      ],
+      "additionalProperties": true
+    },
+    "TransferReceiptResponseType": {
+      "type": "object",
+      "description": "Zeitstempel der letzten Aktualisierung der Bankparameter.",
+      "properties": {
+        "ReturnCodeReceipt": {
+          "description": "response code for the foregoing transfer.",
+          "$ref": "#/definitions/ReturnCodeType"
+        },
+        "TimestampBankParameter": {
+          "description": "Zeitstempel der letzten Aktualisierung der Bankparameter.",
+          "$ref": "#/definitions/TimestampType"
+        }
+      },
+      "required": [
+        "ReturnCodeReceipt"
+      ],
+      "additionalProperties": true
+    },
+    "HAAResponseOrderDataType": {
+      "type": "object",
+      "description": "List of order types for which data are available.",
+      "properties": {
+        "Service": {
+          "type": "array",
+          "items": {
+            "description": "List of order types for which data are available.",
+            "$ref": "#/definitions/RestrictedServiceType"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "HCARequestOrderDataType": {
+      "type": "object",
+      "description": "User-ID.",
+      "properties": {
+        "AuthenticationPubKeyInfo": {
+          "description": "public key for authentication.",
+          "$ref": "#/definitions/AuthenticationPubKeyInfoType"
+        },
+        "EncryptionPubKeyInfo": {
+          "description": "public key for encryption.",
+          "$ref": "#/definitions/EncryptionPubKeyInfoType"
+        },
+        "PartnerID": {
+          "description": "Partner-ID.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "User-ID.",
+          "$ref": "#/definitions/UserIDType"
+        }
+      },
+      "required": [
+        "AuthenticationPubKeyInfo",
+        "EncryptionPubKeyInfo",
+        "PartnerID",
+        "UserID"
+      ],
+      "additionalProperties": true
+    },
+    "HCSRequestOrderDataType": {
+      "type": "object",
+      "description": "User-ID.",
+      "properties": {
+        "AuthenticationPubKeyInfo": {
+          "description": "public key for authentication.",
+          "$ref": "#/definitions/AuthenticationPubKeyInfoType"
+        },
+        "EncryptionPubKeyInfo": {
+          "description": "public key for encryption.",
+          "$ref": "#/definitions/EncryptionPubKeyInfoType"
+        },
+        "esig:SignaturePubKeyInfo": {
+          "$ref": "esig.json#/definitions/SignaturePubKeyInfo"
+        },
+        "PartnerID": {
+          "description": "Partner-ID.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "User-ID.",
+          "$ref": "#/definitions/UserIDType"
+        }
+      },
+      "required": [
+        "AuthenticationPubKeyInfo",
+        "EncryptionPubKeyInfo",
+        "esig:SignaturePubKeyInfo",
+        "PartnerID",
+        "UserID"
+      ],
+      "additionalProperties": true
+    },
+    "HIARequestOrderDataType": {
+      "type": "object",
+      "description": "User-ID.",
+      "properties": {
+        "AuthenticationPubKeyInfo": {
+          "description": "public key for authentication.",
+          "$ref": "#/definitions/AuthenticationPubKeyInfoType"
+        },
+        "EncryptionPubKeyInfo": {
+          "description": "public key for encryption.",
+          "$ref": "#/definitions/EncryptionPubKeyInfoType"
+        },
+        "PartnerID": {
+          "description": "Partner-ID.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "User-ID.",
+          "$ref": "#/definitions/UserIDType"
+        }
+      },
+      "required": [
+        "AuthenticationPubKeyInfo",
+        "EncryptionPubKeyInfo",
+        "PartnerID",
+        "UserID"
+      ],
+      "additionalProperties": true
+    },
+    "H3KRequestOrderDataType": {
+      "type": "object",
+      "description": "UserID.",
+      "properties": {
+        "SignatureCertificateInfo": {
+          "description": "Key for electronic Signature",
+          "$ref": "#/definitions/SignatureCertificateInfoType"
+        },
+        "AuthenticationCertificateInfo": {
+          "description": "Authentication key",
+          "$ref": "#/definitions/AuthenticationCertificateInfoType"
+        },
+        "EncryptionCertificateInfo": {
+          "description": "Encryption key",
+          "$ref": "#/definitions/EncryptionCertificateInfoType"
+        },
+        "PartnerID": {
+          "description": "PartnerID.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "UserID.",
+          "$ref": "#/definitions/UserIDType"
+        }
+      },
+      "required": [
+        "SignatureCertificateInfo",
+        "AuthenticationCertificateInfo",
+        "EncryptionCertificateInfo",
+        "PartnerID",
+        "UserID"
+      ],
+      "additionalProperties": false
+    },
+    "HKDResponseOrderDataType": {
+      "type": "object",
+      "description": "User data.",
+      "properties": {
+        "PartnerInfo": {
+          "description": "Customer data.",
+          "$ref": "#/definitions/PartnerInfoType"
+        },
+        "UserInfo": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "User data.",
+            "$ref": "#/definitions/UserInfoType"
+          }
+        }
+      },
+      "required": [
+        "PartnerInfo",
+        "UserInfo"
+      ],
+      "additionalProperties": true
+    },
+    "HPBResponseOrderDataType": {
+      "type": "object",
+      "description": "Host-ID.",
+      "properties": {
+        "AuthenticationPubKeyInfo": {
+          "description": "public authentication key",
+          "$ref": "#/definitions/AuthenticationPubKeyInfoType"
+        },
+        "EncryptionPubKeyInfo": {
+          "description": "public encryption key",
+          "$ref": "#/definitions/EncryptionPubKeyInfoType"
+        },
+        "esig:SignaturePubKeyInfo": {
+          "description": "public ES key.",
+          "$ref": "esig.json#/definitions/SignaturePubKeyInfo"
+        },
+        "HostID": {
+          "description": "Host-ID.",
+          "$ref": "#/definitions/HostIDType"
+        }
+      },
+      "required": [
+        "AuthenticationPubKeyInfo",
+        "EncryptionPubKeyInfo",
+        "HostID"
+      ],
+      "additionalProperties": true
+    },
+    "HPDResponseOrderDataType": {
+      "type": "object",
+      "description": "Protocol Parameter.",
+      "properties": {
+        "AccessParams": {
+          "description": "Access Parameter.",
+          "$ref": "#/definitions/HPDAccessParamsType"
+        },
+        "ProtocolParams": {
+          "description": "Protocol Parameter.",
+          "$ref": "#/definitions/HPDProtocolParamsType"
+        }
+      },
+      "required": [
+        "AccessParams",
+        "ProtocolParams"
+      ],
+      "additionalProperties": false
+    },
+    "HPDAccessParamsType": {
+      "type": "object",
+      "description": "Banksystem-ID.",
+      "properties": {
+        "URL": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "description": "Valid-From-Date of the URL/IP.",
+            "properties": {
+              "#text": {
+                "type": "string",
+                "format": "uri"
+              },
+              "valid_from": {
+                "description": "Valid-From-Date of the URL/IP.",
+                "$ref": "#/definitions/TimestampType"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "Institute": {
+          "type": "string",
+          "description": "Name of the bank.",
+          "maxLength": 80
+        },
+        "HostID": {
+          "description": "Banksystem-ID.",
+          "$ref": "#/definitions/HostIDType"
+        }
+      },
+      "required": [
+        "URL",
+        "Institute"
+      ],
+      "additionalProperties": true
+    },
+    "HPDProtocolParamsType": {
+      "type": "object",
+      "description": "Parameter denoting the reception of order types which provides downloadable order data (order type HAA).",
+      "properties": {
+        "Version": {
+          "description": "Specification of supported versions..",
+          "$ref": "#/definitions/HPDVersionType"
+        },
+        "Recovery": {
+          "type": "string",
+          "description": "Parameter denoting the recovery function (recovery of aborted transmissions)."
+        },
+        "PreValidation": {
+          "type": "string",
+          "description": "Parameter denoting the pre-validation (beyond transmission of signatures)."
+        },
+        "ClientDataDownload": {
+          "type": "string",
+          "description": "Parameter denoting the download of customer and user data (order types HKD/HTD)."
+        },
+        "DownloadableOrderData": {
+          "type": "string",
+          "description": "Parameter denoting the reception of order types which provides downloadable order data (order type HAA)."
+        }
+      },
+      "required": [
+        "Version"
+      ],
+      "additionalProperties": true
+    },
+    "HPDVersionType": {
+      "type": "object",
+      "description": "supported version for ES (A...).",
+      "properties": {
+        "Protocol": {
+          "description": "supported EBICS protocol versions. (H...).",
+          "$ref": "#/definitions/ProtocolVersionType"
+        },
+        "Authentication": {
+          "description": "supported version for authentication (X...).",
+          "$ref": "#/definitions/AuthenticationVersionType"
+        },
+        "Encryption": {
+          "description": "supported version for encryption (E...).",
+          "$ref": "#/definitions/EncryptionVersionType"
+        },
+        "Signature": {
+          "description": "supported version for ES (A...).",
+          "$ref": "esig.json#/definitions/SignatureVersionType"
+        }
+      },
+      "required": [
+        "Protocol",
+        "Authentication",
+        "Encryption",
+        "Signature"
+      ],
+      "additionalProperties": true
+    },
+    "HTDReponseOrderDataType": {
+      "type": "object",
+      "description": "User data.",
+      "properties": {
+        "PartnerInfo": {
+          "description": "Customer data.",
+          "$ref": "#/definitions/PartnerInfoType"
+        },
+        "UserInfo": {
+          "description": "User data.",
+          "$ref": "#/definitions/UserInfoType"
+        }
+      },
+      "required": [
+        "PartnerInfo",
+        "UserInfo"
+      ],
+      "additionalProperties": true
+    },
+    "HVDResponseOrderDataType": {
+      "type": "object",
+      "description": "Information about the already existing signers.",
+      "properties": {
+        "DataDigest": {
+          "description": "Hash value of the order data.",
+          "$ref": "#/definitions/DataDigestType"
+        },
+        "DisplayFile": {
+          "type": "string",
+          "format": "byte",
+          "description": "Accompanying ticket/\"display file\" (corresponds to the display file of the customer's journal according to the document \"DFÜ-Abkommen\")."
+        },
+        "OrderDataAvailable": {
+          "type": "boolean",
+          "description": "Can the order file be downloaded in the original format? (HVT with completeOrderData=true)"
+        },
+        "OrderDataSize": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Size of the uncompressed order data (byte count)."
+        },
+        "OrderDetailsAvailable": {
+          "type": "boolean",
+          "description": "Can the order details be downloaded as XML document HVTResponseOrderData?  (HVT with completeOrderData=false)"
+        },
+        "BankSignature": {
+          "description": "Digital Signature issued by the bank, covering the hash value and the accompanying ticket.",
+          "$ref": "#/definitions/SignatureType"
+        },
+        "SignerInfo": {
+          "type": "array",
+          "items": {
+            "description": "Information about the already existing signers.",
+            "$ref": "#/definitions/SignerInfoType"
+          }
+        }
+      },
+      "required": [
+        "DataDigest",
+        "DisplayFile",
+        "OrderDataAvailable",
+        "OrderDataSize",
+        "OrderDetailsAvailable"
+      ],
+      "additionalProperties": true
+    },
+    "HVDOrderParamsType": {
+      "type": "object",
+      "description": "Data type for additional order parameters for order type HVD.",
+      "properties": {
+        "ebics:HVRequestStructure": {
+          "$ref": "#/definitions/HVRequestStructure"
+        }
+      },
+      "required": [
+        "ebics:HVRequestStructure"
+      ],
+      "additionalProperties": true
+    },
+    "HVEOrderParamsType": {
+      "type": "object",
+      "description": "Data type for additional order parameters for order type HVE.",
+      "properties": {
+        "ebics:HVRequestStructure": {
+          "$ref": "#/definitions/HVRequestStructure"
+        }
+      },
+      "required": [
+        "ebics:HVRequestStructure"
+      ],
+      "additionalProperties": true
+    },
+    "HVSOrderParamsType": {
+      "type": "object",
+      "description": "Data type for additional order parameters for order type HVS.",
+      "properties": {
+        "ebics:HVRequestStructure": {
+          "$ref": "#/definitions/HVRequestStructure"
+        }
+      },
+      "required": [
+        "ebics:HVRequestStructure"
+      ],
+      "additionalProperties": true
+    },
+    "HVSRequestOrderDataType": {
+      "type": "object",
+      "description": "Hash value of order data of cancelled order.",
+      "properties": {
+        "CancelledDataDigest": {
+          "description": "Hash value of order data of cancelled order.",
+          "$ref": "#/definitions/DataDigestType"
+        }
+      },
+      "required": [
+        "CancelledDataDigest"
+      ],
+      "additionalProperties": true
+    },
+    "HVTResponseOrderDataType": {
+      "type": "object",
+      "description": "Particular order content information requested for display matters.",
+      "properties": {
+        "NumOrderInfos": {
+          "description": "Total number of order infos for the order.",
+          "$ref": "#/definitions/NumOrderInfosType"
+        },
+        "OrderInfo": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "Particular order content information requested for display matters.",
+            "$ref": "#/definitions/HVTOrderInfoType"
+          }
+        }
+      },
+      "required": [
+        "NumOrderInfos",
+        "OrderInfo"
+      ],
+      "additionalProperties": true
+    },
+    "HVTAccountInfoType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributedAccountType"
+        },
+        {
+          "type": "string",
+          "description": "Data type for account information regarding order type HVT."
+        }
+      ]
+    },
+    "HVTOrderInfoType": {
+      "type": "object",
+      "description": "text field for additional descriptions regarding the transaction (remittance information, order details, annotations).",
+      "properties": {
+        "MsgName": {
+          "$ref": "#/definitions/MessageType"
+        },
+        "AccountInfo": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "description": "account related details of the order (ordering party, receiver etc.).",
+            "$ref": "#/definitions/HVTAccountInfoType"
+          }
+        },
+        "ExecutionDate": {
+          "type": "object",
+          "description": "Execution date.",
+          "properties": {
+            "#text": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}.*$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "Amount": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/AmountValueType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/AmountValueType"
+                },
+                {
+                  "type": "string",
+                  "description": "Amount.",
+                  "$ref": "#/definitions/CurrencyBaseType"
+                }
+              ],
+              "description": "Currency code.",
+              "$ref": "#/definitions/CurrencyBaseType"
+            }
+          ],
+          "description": "Currency code."
+        },
+        "Description": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "description": "Description type.",
+            "properties": {
+              "#text": {
+                "type": "string"
+              },
+              "Type": {
+                "description": "Purpose: [object Object],[object Object]Details: [object Object],[object Object]Comment: [object Object],[object Object]",
+                "enum": [
+                  "Purpose",
+                  "Details",
+                  "Comment"
+                ]
+              }
+            },
+            "required": [
+              "Type"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "AccountInfo",
+        "Amount"
+      ],
+      "additionalProperties": true
+    },
+    "HVTOrderFlagsType": {
+      "type": "object",
+      "description": "Offset position in the original order file which marks the starting point for the transaction details to be transmitted; applies to the sequential number of a particular order if completeOrderData=false (Proposal for Default=0).",
+      "properties": {
+        "completeOrderData": {
+          "type": "boolean",
+          "description": "Are the transaction details so be transmitted as particular order content information requested for display matters or in complete order data file form? (Proposal for Default=false)"
+        },
+        "fetchLimit": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Limit for the transaction details to be transmitted; if completeOrderData=false, maximum number of details of a particular order; 0 for unlimited number of details (Proposal for Default=100)."
+        },
+        "fetchOffset": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Offset position in the original order file which marks the starting point for the transaction details to be transmitted; applies to the sequential number of a particular order if completeOrderData=false (Proposal for Default=0)."
+        }
+      },
+      "required": [
+        "completeOrderData",
+        "fetchLimit",
+        "fetchOffset"
+      ],
+      "additionalProperties": true
+    },
+    "HVTOrderParamsType": {
+      "type": "object",
+      "description": "Generic key-value parameters",
+      "properties": {
+        "ebics:HVRequestStructure": {
+          "$ref": "#/definitions/HVRequestStructure"
+        },
+        "OrderFlags": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/HVTOrderFlagsType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/HVTOrderFlagsType"
+                },
+                {
+                  "type": "string",
+                  "description": "Special order flags for orders of type HVT."
+                }
+              ],
+              "description": "Special order flags for orders of type HVT."
+            }
+          ],
+          "description": "Special order flags for orders of type HVT."
+        },
+        "ebics:Parameter": {
+          "type": "array",
+          "items": {
+            "description": "Generic key-value parameters",
+            "$ref": "#/definitions/Parameter"
+          }
+        }
+      },
+      "required": [
+        "ebics:HVRequestStructure",
+        "OrderFlags"
+      ],
+      "additionalProperties": true
+    },
+    "HVUResponseOrderDataType": {
+      "type": "object",
+      "description": "Auftragsinformationen.",
+      "properties": {
+        "OrderDetails": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "Auftragsinformationen.",
+            "$ref": "#/definitions/HVUOrderDetailsType"
+          }
+        }
+      },
+      "required": [
+        "OrderDetails"
+      ],
+      "additionalProperties": true
+    },
+    "HVUOrderDetailsType": {
+      "type": "object",
+      "description": "Additional Information about the order (unstructured, up to 255 characters).",
+      "properties": {
+        "Service": {
+          "description": "Type of the order.",
+          "$ref": "#/definitions/RestrictedServiceType"
+        },
+        "OrderID": {
+          "description": "Order number.",
+          "$ref": "#/definitions/OrderIDType"
+        },
+        "OrderDataSize": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Order data size in bytes."
+        },
+        "SigningInfo": {
+          "description": "Signing information.",
+          "$ref": "#/definitions/HVUSigningInfoType"
+        },
+        "SignerInfo": {
+          "type": "array",
+          "items": {
+            "description": "Information regarding the signer.",
+            "$ref": "#/definitions/SignerInfoType"
+          }
+        },
+        "OriginatorInfo": {
+          "description": "Information regarding the originator.",
+          "$ref": "#/definitions/HVUOriginatorInfoType"
+        },
+        "AdditionalOrderInfo": {
+          "description": "Additional Information about the order (unstructured, up to 255 characters).",
+          "$ref": "#/definitions/String255Type"
+        }
+      },
+      "required": [
+        "Service",
+        "OrderID",
+        "OrderDataSize",
+        "SigningInfo",
+        "OriginatorInfo"
+      ],
+      "additionalProperties": true
+    },
+    "HVUOrderParamsType": {
+      "type": "object",
+      "description": "Liste von Auftragsarten, für die zur Unterschrift vorliegende Aufträge abgerufen werden sollen; falls nicht angegeben, werden sämtliche für den Teilnehmer unterschriftsfähigen Aufträge abgerufen.",
+      "properties": {
+        "ServiceFilter": {
+          "type": "array",
+          "items": {
+            "description": "Liste von Auftragsarten, für die zur Unterschrift vorliegende Aufträge abgerufen werden sollen; falls nicht angegeben, werden sämtliche für den Teilnehmer unterschriftsfähigen Aufträge abgerufen.",
+            "$ref": "#/definitions/ServiceType"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "HVZOrderParamsType": {
+      "type": "object",
+      "description": "Liste von Auftragsarten, für die zur Unterschrift vorliegende Aufträge abgerufen werden sollen; falls nicht angegeben, werden sämtliche für den Teilnehmer unterschriftsfähigen Aufträge abgerufen.",
+      "properties": {
+        "ServiceFilter": {
+          "type": "array",
+          "items": {
+            "description": "Liste von Auftragsarten, für die zur Unterschrift vorliegende Aufträge abgerufen werden sollen; falls nicht angegeben, werden sämtliche für den Teilnehmer unterschriftsfähigen Aufträge abgerufen.",
+            "$ref": "#/definitions/ServiceType"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "HVUSigningInfoType": {
+      "type": "object",
+      "description": "Anzahl der bereits geleisteten EUs.",
+      "properties": {
+        "readyToBeSigned": {
+          "type": "boolean",
+          "description": "Ist der Auftrag unterschriftsreif (\"true\") oder bereits vom Teilnehmer unterschrieben (\"false\")?"
+        },
+        "NumSigRequired": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Anzahl der insgesamt zur Freigabe erforderlichen EUs."
+        },
+        "NumSigDone": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Anzahl der bereits geleisteten EUs."
+        }
+      },
+      "required": [
+        "readyToBeSigned",
+        "NumSigRequired",
+        "NumSigDone"
+      ],
+      "additionalProperties": false
+    },
+    "HVUOriginatorInfoType": {
+      "type": "object",
+      "description": "Zeitstempel der Einreichung (d.h. der Übertragung der Auftragsdatei).",
+      "properties": {
+        "PartnerID": {
+          "description": "Kunden-ID des Einreichers.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "Teilnehmer-ID des Einreichers.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "Name": {
+          "description": "Name des Einreichers.",
+          "$ref": "#/definitions/NameType"
+        },
+        "Timestamp": {
+          "description": "Zeitstempel der Einreichung (d.h. der Übertragung der Auftragsdatei).",
+          "$ref": "#/definitions/TimestampType"
+        }
+      },
+      "required": [
+        "PartnerID",
+        "UserID",
+        "Timestamp"
+      ],
+      "additionalProperties": true
+    },
+    "HVZResponseOrderDataType": {
+      "type": "object",
+      "description": "Summary of order information.",
+      "properties": {
+        "OrderDetails": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "Summary of order information.",
+            "$ref": "#/definitions/HVZOrderDetailsType"
+          }
+        }
+      },
+      "required": [
+        "OrderDetails"
+      ],
+      "additionalProperties": true
+    },
+    "HVZOrderDetailsType": {
+      "type": "object",
+      "description": "Order details related to payment orders only.",
+      "properties": {
+        "Service": {
+          "description": "Type of the order.",
+          "$ref": "#/definitions/RestrictedServiceType"
+        },
+        "OrderID": {
+          "description": "ID number of the order.",
+          "$ref": "#/definitions/OrderIDType"
+        },
+        "DataDigest": {
+          "description": "Hash value of the order data.",
+          "$ref": "#/definitions/DataDigestType"
+        },
+        "OrderDataAvailable": {
+          "type": "boolean",
+          "description": "Can the order file be downloaded in the original format? (HVT with completeOrderData=true)"
+        },
+        "OrderDataSize": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Size of uncompressed order data in Bytes."
+        },
+        "OrderDetailsAvailable": {
+          "type": "boolean",
+          "description": "Can the order details be downloaded as XML document HVTResponseOrderData?  (HVT with completeOrderData=false)"
+        },
+        "SigningInfo": {
+          "description": "Information regarding the signing modalities of the order.",
+          "$ref": "#/definitions/HVUSigningInfoType"
+        },
+        "SignerInfo": {
+          "type": "array",
+          "items": {
+            "description": "Information regarding the users who already signed the order.",
+            "$ref": "#/definitions/SignerInfoType"
+          }
+        },
+        "OriginatorInfo": {
+          "description": "Information regarding the originator of the order.",
+          "$ref": "#/definitions/HVUOriginatorInfoType"
+        },
+        "AdditionalOrderInfo": {
+          "description": "Additional Information about the order (unstructured, up to 255 characters).",
+          "$ref": "#/definitions/String255Type"
+        },
+        "ebics:HVZPaymentOrderDetailsStructure": {
+          "description": "Order details related to payment orders only.",
+          "$ref": "#/definitions/HVZPaymentOrderDetailsStructure"
+        }
+      },
+      "required": [
+        "Service",
+        "OrderID",
+        "DataDigest",
+        "OrderDataAvailable",
+        "OrderDataSize",
+        "OrderDetailsAvailable",
+        "SigningInfo",
+        "OriginatorInfo"
+      ],
+      "additionalProperties": true
+    },
+    "SignerInfoType": {
+      "type": "object",
+      "description": "zusätzliche Informationen zu den Berechtigungen des Teilnehmers, der unterzeichnet hat.",
+      "properties": {
+        "PartnerID": {
+          "description": "Kunden-ID des Unterzeichners.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "Teilnehmer-ID des Unterzeichners.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "Name": {
+          "description": "Name des Unterzeichners.",
+          "$ref": "#/definitions/NameType"
+        },
+        "Timestamp": {
+          "description": "Zeitstempel der Unterzeichnung (d.h. der Übertragung der Unterschrift).",
+          "$ref": "#/definitions/TimestampType"
+        },
+        "Permission": {
+          "type": "string",
+          "description": "zusätzliche Informationen zu den Berechtigungen des Teilnehmers, der unterzeichnet hat."
+        }
+      },
+      "required": [
+        "PartnerID",
+        "UserID",
+        "Timestamp",
+        "Permission"
+      ],
+      "additionalProperties": true
+    },
+    "UserPermissionType": {
+      "type": "object",
+      "description": "Authorization level of the user who signed the order; to be omitted for orders of type \"download\".",
+      "properties": {
+        "AdminOrderType": {
+          "description": "List of order types which the user's permission belongs to.",
+          "$ref": "#/definitions/OrderTBaseType"
+        },
+        "Service": {
+          "description": "Identification of the file format in the case of FUL/FDL",
+          "$ref": "#/definitions/RestrictedServiceType"
+        },
+        "AccountID": {
+          "description": "Identification codes of the affected accounts.",
+          "$ref": "#/definitions/AccountIDType"
+        },
+        "MaxAmount": {
+          "description": "Maximum total amount which the user's permission is valid for.",
+          "$ref": "#/definitions/AmountType"
+        },
+        "AuthorisationLevel": {
+          "description": "Authorization level of the user who signed the order; to be omitted for orders of type \"download\".",
+          "$ref": "#/definitions/AuthorisationLevelType"
+        }
+      },
+      "required": [
+        "AdminOrderType"
+      ],
+      "additionalProperties": true
+    },
+    "PartnerInfoType": {
+      "type": "object",
+      "description": "Information about order types which the customer is authorised to use.",
+      "properties": {
+        "AddressInfo": {
+          "description": "Information about the customer's adress.",
+          "$ref": "#/definitions/AddressInfoType"
+        },
+        "BankInfo": {
+          "description": "Information about the customer's banking access paramters.",
+          "$ref": "#/definitions/BankInfoType"
+        },
+        "AccountInfo": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/AccountType"
+              },
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/AccountType"
+                  },
+                  {
+                    "type": "string",
+                    "description": "Information about the customer's accounts.",
+                    "required": [
+                      "ID"
+                    ],
+                    "$ref": "#/definitions/AccountIDType"
+                  }
+                ],
+                "required": [
+                  "ID"
+                ],
+                "description": "Identifikationscode des Kontos.",
+                "$ref": "#/definitions/AccountIDType"
+              }
+            ],
+            "description": "Identifikationscode des Kontos."
+          }
+        },
+        "OrderInfo": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "Information about order types which the customer is authorised to use.",
+            "$ref": "#/definitions/AuthOrderInfoType"
+          }
+        }
+      },
+      "required": [
+        "AddressInfo",
+        "BankInfo",
+        "OrderInfo"
+      ],
+      "additionalProperties": false
+    },
+    "AddressInfoType": {
+      "type": "object",
+      "description": "Country.",
+      "properties": {
+        "Name": {
+          "description": "Customer's name.",
+          "$ref": "#/definitions/NameType"
+        },
+        "Street": {
+          "description": "Street and house number.",
+          "$ref": "#/definitions/NameType"
+        },
+        "PostCode": {
+          "type": "string",
+          "description": "Postal code."
+        },
+        "City": {
+          "description": "City.",
+          "$ref": "#/definitions/NameType"
+        },
+        "Region": {
+          "description": "Region / province / federal state.",
+          "$ref": "#/definitions/NameType"
+        },
+        "Country": {
+          "description": "Country.",
+          "$ref": "#/definitions/NameType"
+        }
+      },
+      "additionalProperties": true
+    },
+    "BankInfoType": {
+      "type": "object",
+      "description": "Banksystem-ID.",
+      "properties": {
+        "HostID": {
+          "description": "Banksystem-ID.",
+          "$ref": "#/definitions/HostIDType"
+        },
+        "ebics:Parameter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Parameter"
+          }
+        }
+      },
+      "required": [
+        "HostID"
+      ],
+      "additionalProperties": true
+    },
+    "UserInfoType": {
+      "type": "object",
+      "description": "Informationen zu den Berechtigungen des Teilnehmers.",
+      "properties": {
+        "UserID": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/UserIDType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/UserIDType"
+                },
+                {
+                  "type": "string",
+                  "description": "Teilnehmer-ID.",
+                  "required": [
+                    "Status"
+                  ],
+                  "$ref": "#/definitions/UserStatusType"
+                }
+              ],
+              "required": [
+                "Status"
+              ],
+              "description": "Status des Teilnehmers.",
+              "$ref": "#/definitions/UserStatusType"
+            }
+          ],
+          "description": "Status des Teilnehmers."
+        },
+        "Name": {
+          "description": "Name des Teilnehmers.",
+          "$ref": "#/definitions/NameType"
+        },
+        "Permission": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "Informationen zu den Berechtigungen des Teilnehmers.",
+            "$ref": "#/definitions/UserPermissionType"
+          }
+        }
+      },
+      "required": [
+        "UserID",
+        "Permission"
+      ],
+      "additionalProperties": true
+    },
+    "AuthOrderInfoType": {
+      "type": "object",
+      "description": "Anzahl erforderlicher EUs (Default=0).",
+      "properties": {
+        "AdminOrderType": {
+          "description": "Administrative EBICS Auftragsart.",
+          "$ref": "#/definitions/OrderTBaseType"
+        },
+        "Service": {
+          "description": "Identification of the file format in the case of FUL/FDL",
+          "$ref": "#/definitions/RestrictedServiceType"
+        },
+        "Description": {
+          "description": "Beschreibung der Auftragsart.",
+          "$ref": "#/definitions/OrderDescriptionType"
+        },
+        "NumSigRequired": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Anzahl erforderlicher EUs (Default=0)."
+        }
+      },
+      "required": [
+        "AdminOrderType",
+        "Description"
+      ],
+      "additionalProperties": true
+    },
+    "StandardOrderParamsType": {
+      "type": "object",
+      "description": "Datumsbereich (von-bis).",
+      "properties": {
+        "DateRange": {
+          "type": "object",
+          "description": "Datumsbereich (von-bis).",
+          "properties": {
+            "Start": {
+              "description": "Startdatum (inkl.).",
+              "$ref": "#/definitions/DateType"
+            },
+            "End": {
+              "description": "Enddatum (inkl.).",
+              "$ref": "#/definitions/DateType"
+            },
+            "DateRange": {
+              "type": "object",
+              "description": "Enddatum (inkl.).",
+              "properties": {
+                "Start": {
+                  "description": "Startdatum (inkl.).",
+                  "$ref": "#/definitions/DateType"
+                },
+                "End": {
+                  "description": "Enddatum (inkl.).",
+                  "$ref": "#/definitions/DateType"
+                }
+              },
+              "required": [
+                "Start",
+                "End"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "Start",
+            "End"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "BTDParamsType": {
+      "type": "object",
+      "description": "The file name on the client It can be transmitted optionally",
+      "properties": {
+        "Service": {
+          "description": "Service name - target system for the further processing of the order",
+          "$ref": "#/definitions/RestrictedServiceType"
+        },
+        "DateRange": {
+          "$ref": "#/definitions/DateRangeType"
+        },
+        "ebics:Parameter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Parameter"
+          }
+        },
+        "fileName": {
+          "description": "The file name on the client It can be transmitted optionally",
+          "$ref": "#/definitions/FileNameStringType"
+        }
+      },
+      "required": [
+        "Service"
+      ],
+      "additionalProperties": false
+    },
+    "BTUParamsType": {
+      "type": "object",
+      "description": "The file name on the client It can be transmitted optionally",
+      "properties": {
+        "Service": {
+          "description": "Service name - target system for the further processing of the order",
+          "$ref": "#/definitions/RestrictedServiceType"
+        },
+        "SignatureFlag": {
+          "description": "If not present the order doesn't contain any ES and shall be authorised outside EBICS\r\nIf present the order shall be autorised within EBICS: \r\n1. If the attribute VEU is also present the sender desires spooling into the VEU - hence in this case the order is not rejected in the case of not sufficient number of ES\r\n2. If the attribute is not present all necessary ES must be inside the order (else: rejection of the order)",
+          "$ref": "#/definitions/SignatureFlagType"
+        },
+        "ebics:Parameter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Parameter"
+          }
+        },
+        "fileName": {
+          "description": "The file name on the client It can be transmitted optionally",
+          "$ref": "#/definitions/FileNameStringType"
+        }
+      },
+      "required": [
+        "Service"
+      ],
+      "additionalProperties": false
+    },
+    "BTFParamsTyp": {
+      "type": "object",
+      "description": "The file name on the client It can be transmitted optionally",
+      "properties": {
+        "Service": {
+          "description": "Service name - target system for the further processing of the order",
+          "$ref": "#/definitions/RestrictedServiceType"
+        },
+        "SignatureFlag": {
+          "description": "If not present the order doesn't contain any ES and shall be authorised outside EBICS\r\nIf present the order shall be autorised within EBICS: \r\n1. If the attribute VEU is also present the sender desires spooling into the VEU - hence in this case the order is not rejected in the case of not sufficient number of ES\r\n2. If the attribute is not present all necessary ES must be inside the order (else: rejection of the order)",
+          "$ref": "#/definitions/SignatureFlagType"
+        },
+        "DateRange": {
+          "$ref": "#/definitions/DateRangeType"
+        },
+        "ebics:Parameter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Parameter"
+          }
+        },
+        "fileName": {
+          "description": "The file name on the client It can be transmitted optionally",
+          "$ref": "#/definitions/FileNameStringType"
+        }
+      },
+      "required": [
+        "Service"
+      ],
+      "additionalProperties": false
+    },
+    "DateRangeType": {
+      "type": "object",
+      "description": "Datentyp für die Angabe eines (Berichts-) Zeitraums",
+      "properties": {
+        "Start": {
+          "$ref": "#/definitions/DateType"
+        },
+        "End": {
+          "$ref": "#/definitions/DateType"
+        }
+      },
+      "required": [
+        "Start",
+        "End"
+      ],
+      "additionalProperties": false
+    },
+    "FlagAttribType": {
+      "type": "string",
+      "description": "Basis-Datentyp für Kennzeichen mit optionalem Attribut"
+    },
+    "MessageType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MessageNameStringType"
+        },
+        {
+          "type": "object",
+          "description": "Encoding format of the message (e.g. XML, ASN1, JSON, PDF)",
+          "properties": {
+            "variant": {
+              "description": "Variant number of the message type (usable for ISO20022 messages)",
+              "$ref": "#/definitions/NumStringType"
+            },
+            "version": {
+              "description": "Version number of the message type  (usable for ISO20022 messages)",
+              "$ref": "#/definitions/NumStringType"
+            },
+            "format": {
+              "description": "Encoding format of the message (e.g. XML, ASN1, JSON, PDF)",
+              "$ref": "#/definitions/CodeStringType",
+              "maxLength": 4
+            }
+          },
+          "additionalProperties": true,
+          "$ref": "#/definitions/CodeStringType"
+        }
+      ],
+      "description": "Encoding format of the message (e.g. XML, ASN1, JSON, PDF)"
+    },
+    "ServiceType": {
+      "type": "object",
+      "description": "Name of the message, e.g. pain.001 or mt101 National message names (issued by DK, CFONB or SIC are also allowed)",
+      "properties": {
+        "ServiceName": {
+          "description": "Service Code name: External list specified and maintained by EBICS. Basis is the \"SWIFT-list\" for the field \"description\" (SCT, DCT, XCT, SDD, DDD, STM, REP...) plus additional codes needed for further services",
+          "$ref": "#/definitions/ServiceNameStringType"
+        },
+        "Scope": {
+          "description": "Specifies whose rules have to be taken into account for the service. This means which market / comminity has defined the rules. \r\nIf the element is absent a global definition for the service is assumed.\r\nExternal list specified and maintained by EBICS. In addition the following codes may be used:\r\n2-character ISO country code or a 3-character issuer code (defined by EBICS)",
+          "$ref": "#/definitions/ScopeStringType"
+        },
+        "ServiceOption": {
+          "description": "Service Option Code\r\nAdditional option for the service (also depends on used scope)",
+          "$ref": "#/definitions/ServiceOptionStringType"
+        },
+        "Container": {
+          "description": "Container flag. If present, data is provided/requested in a container format specified in the attribute of the flag",
+          "$ref": "#/definitions/ContainerFlagType"
+        },
+        "MsgName": {
+          "description": "Name of the message, e.g. pain.001 or mt101 National message names (issued by DK, CFONB or SIC are also allowed)",
+          "$ref": "#/definitions/MessageType"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RestrictedServiceType": {
+      "type": "object",
+      "description": "Name of the message, e.g. pain.001 or mt101 National message names (issued by DK, CFONB or SIC are also allowed)",
+      "properties": {
+        "ServiceName": {
+          "description": "Service Code name: External list specified and maintained by EBICS. Basis is the \"SWIFT-list\" for the field \"description\" (SCT, DCT, XCT, SDD, DDD, STM, REP...) plus additional codes needed for further services",
+          "$ref": "#/definitions/ServiceNameStringType"
+        },
+        "Scope": {
+          "description": "Specifies whose rules have to be taken into account for the service. This means which market / comminity has defined the rules. \r\nIf the element is absent a global definition for the service is assumed.\r\nExternal list specified and maintained by EBICS.\r\nIn addition the following codes may be used:        \r\n2-character ISO country code or a 3-character issuer code (defined by EBICS)",
+          "$ref": "#/definitions/ScopeStringType"
+        },
+        "ServiceOption": {
+          "description": "Service Option Code\r\n\t\tAdditional option for the service (also depends on used scope)",
+          "$ref": "#/definitions/ServiceOptionStringType"
+        },
+        "Container": {
+          "description": "Container flag. If present, data is provided/requested in a container format specified in the attribute of the flag",
+          "$ref": "#/definitions/ContainerFlagType"
+        },
+        "MsgName": {
+          "description": "Name of the message, e.g. pain.001 or mt101 National message names (issued by DK, CFONB or SIC are also allowed)",
+          "$ref": "#/definitions/MessageType"
+        }
+      },
+      "required": [
+        "ServiceName",
+        "MsgName"
+      ],
+      "additionalProperties": false
+    },
+    "ContainerFlagType": {
+      "type": "object",
+      "description": "Specifies the container type  - External Codelist defined by EBICS (starting values: XML, ZIP, SVC)",
+      "properties": {
+        "containerType": {
+          "description": "Specifies the container type  - External Codelist defined by EBICS (starting values: XML, ZIP, SVC)",
+          "$ref": "#/definitions/ContainerStringType"
+        }
+      },
+      "required": [
+        "containerType"
+      ],
+      "additionalProperties": false
+    },
+    "SignatureFlagType": {
+      "type": "object",
+      "description": "If present the sender desires spooling into EBICS distributed signature queue, only \"true\" is allowed",
+      "properties": {
+        "requestEDS": {
+          "type": "boolean",
+          "description": "If present the sender desires spooling into EBICS distributed signature queue, only \"true\" is allowed"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UsageOrderType": {
+      "type": "object",
+      "description": "Service Parameter-Sets von nicht unterstützten BTF-Auftragsarten",
+      "properties": {
+        "Service": {
+          "type": "array",
+          "items": {
+            "description": "Service Parameter-Sets von nicht unterstützten BTF-Auftragsarten",
+            "$ref": "#/definitions/RestrictedServiceType"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

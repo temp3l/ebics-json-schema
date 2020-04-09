@@ -1,5 +1,5 @@
 {
-  "title": "../ebics_3.0_schema_H005FinalVersion07-08-2017/ebics_types_H005.xsd",
+  "title": "./ebicsXML/ebics_types_H005.xsd",
   "$schema": "http://json-schema.org/schema#",
   "id": "urn:org:ebics:H005",
   "description": "ebics_types_H005.xsd enthält einfache Typdefinitionen für EBICS.",
@@ -21,7 +21,7 @@
       "properties": {
         "Name": {
           "type": "string",
-          "description": "name of parameter"
+          "description": "Name of the parameter (= key)."
         },
         "Value": {
           "allOf": [
@@ -35,7 +35,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "value of parameter",
+                  "description": "Value of the parameter.",
                   "required": [
                     "Type"
                   ]
@@ -44,10 +44,10 @@
               "required": [
                 "Type"
               ],
-              "description": "XML-Typ des Parameterwerts (Vorschlag für default ist string)."
+              "description": "XML type of the parameter value (Proposal for default is string)."
             }
           ],
-          "description": "XML-Typ des Parameterwerts (Vorschlag für default ist string)."
+          "description": "XML type of the parameter value (Proposal for default is string)."
         }
       },
       "required": [
@@ -564,10 +564,10 @@
         },
         {
           "type": "object",
-          "description": "Währungscode, Default=\"EUR\".",
+          "description": "Currency code, default setting is \"EUR\".",
           "properties": {
             "Currency": {
-              "description": "Währungscode, Default=\"EUR\".",
+              "description": "Currency code, default setting is \"EUR\".",
               "$ref": "#/definitions/CurrencyBaseType"
             }
           },
@@ -575,11 +575,11 @@
           "$ref": "#/definitions/CurrencyBaseType"
         }
       ],
-      "description": "Währungscode, Default=\"EUR\"."
+      "description": "Currency code, default setting is \"EUR\"."
     },
     "AccountType": {
       "type": "object",
-      "description": "Kontobeschreibung.",
+      "description": "Description of this account.",
       "properties": {
         "AccountNumber": {
           "allOf": [
@@ -593,13 +593,13 @@
                 },
                 {
                   "type": "string",
-                  "description": "Kontonummer (deutsches Format und/oder international als IBAN)."
+                  "description": "Account number (German format and/or international=IBAN)."
                 }
               ],
-              "description": "Ist die Kontonummer im deutschen Format (international=false) oder im internationalen Format (international=true, IBAN) angegeben?"
+              "description": "Is the account number specified using the national=German or the international=IBAN format?"
             }
           ],
-          "description": "Ist die Kontonummer im deutschen Format (international=false) oder im internationalen Format (international=true, IBAN) angegeben?"
+          "description": "Is the account number specified using the national=German or the international=IBAN format?"
         },
         "NationalAccountNumber": {
           "allOf": [
@@ -613,7 +613,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "Kontonummer im freien Format.",
+                  "description": "Account in free format.",
                   "required": [
                     "format"
                   ]
@@ -624,10 +624,10 @@
                 "AccountNumber",
                 "NationalAccountNumber"
               ],
-              "description": "Formatkennung."
+              "description": "Format identification."
             }
           ],
-          "description": "Kontonummer im freien Format."
+          "description": "Account in free format."
         },
         "BankCode": {
           "allOf": [
@@ -641,15 +641,15 @@
                 },
                 {
                   "type": "string",
-                  "description": "Bankleitzahl (deutsches Format und/oder international als SWIFT-BIC).",
+                  "description": "Bank code (German and/or international=SWIFT-BIC).",
                   "$ref": "#/definitions/BankCodePrefixType"
                 }
               ],
-              "description": "nationales Präfix für Bankleitzahlen.",
+              "description": "National=German prefix for bank codes.",
               "$ref": "#/definitions/BankCodePrefixType"
             }
           ],
-          "description": "nationales Präfix für Bankleitzahlen."
+          "description": "National=German prefix for bank codes."
         },
         "NationalBankCode": {
           "allOf": [
@@ -663,7 +663,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "Bankleitzahl im freien Format.",
+                  "description": "Bank code in free format.",
                   "required": [
                     "format"
                   ]
@@ -674,21 +674,21 @@
                 "BankCode",
                 "NationalBankCode"
               ],
-              "description": "Formatkennung."
+              "description": "Format identification."
             }
           ],
-          "description": "Bankleitzahl im freien Format."
+          "description": "Bank code in free format."
         },
         "AccountHolder": {
           "description": "Name des Kontoinhabers.",
           "$ref": "#/definitions/AccountHolderType"
         },
         "Currency": {
-          "description": "Währungscode für dieses Konto, Default=EUR.",
+          "description": "Currency code for this account, Default=EUR.",
           "$ref": "#/definitions/CurrencyBaseType"
         },
         "Description": {
-          "description": "Kontobeschreibung.",
+          "description": "Description of this account.",
           "$ref": "#/definitions/AccountDescriptionType"
         }
       },
@@ -702,7 +702,7 @@
     },
     "AttributedAccountType": {
       "type": "object",
-      "description": "Kontobeschreibung.",
+      "description": "Description of this account.",
       "properties": {
         "AccountNumber": {
           "allOf": [
@@ -716,7 +716,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "Kontonummer (deutsches Format oder international als IBAN).",
+                  "description": "Kontonummer (Account number (German format and/or international = IBAN).",
                   "required": [
                     "Role"
                   ]
@@ -725,10 +725,10 @@
               "required": [
                 "Role"
               ],
-              "description": "Ist die Kontonummer im deutschen Format (international=false) oder im internationalen Format (international=true, IBAN) angegeben?"
+              "description": "Is the account number specified using the national=German or the international=IBAN format?"
             }
           ],
-          "description": "Ist die Kontonummer im deutschen Format (international=false) oder im internationalen Format (international=true, IBAN) angegeben?"
+          "description": "Is the account number specified using the national=German or the international=IBAN format?"
         },
         "NationalAccountNumber": {
           "allOf": [
@@ -742,7 +742,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "Kontonummer im freien Format.",
+                  "description": "Account in free format.",
                   "required": [
                     "Role",
                     "format"
@@ -755,10 +755,10 @@
                 "AccountNumber",
                 "NationalAccountNumber"
               ],
-              "description": "Formatkennung."
+              "description": "Format identification."
             }
           ],
-          "description": "Kontonummer im freien Format."
+          "description": "Account in free format."
         },
         "BankCode": {
           "allOf": [
@@ -772,7 +772,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "Bankleitzahl (deutsches Format oder international als SWIFT-BIC).",
+                  "description": "Bank code (German and/or international=SWIFT-BIC).",
                   "required": [
                     "Role"
                   ],
@@ -782,11 +782,11 @@
               "required": [
                 "Role"
               ],
-              "description": "nationales Präfix für Bankleitzahlen.",
+              "description": "National=German prefix for bank codes.",
               "$ref": "#/definitions/BankCodePrefixType"
             }
           ],
-          "description": "nationales Präfix für Bankleitzahlen."
+          "description": "National=German prefix for bank codes."
         },
         "NationalBankCode": {
           "allOf": [
@@ -800,7 +800,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "Bankleitzahl im freien Format.",
+                  "description": "Bank code in free format.",
                   "required": [
                     "Role",
                     "format"
@@ -813,10 +813,10 @@
                 "BankCode",
                 "NationalBankCode"
               ],
-              "description": "Formatkennung."
+              "description": "Format identification."
             }
           ],
-          "description": "Bankleitzahl im freien Format."
+          "description": "Bank code in free format."
         },
         "AccountHolder": {
           "allOf": [
@@ -839,17 +839,17 @@
               "required": [
                 "Role"
               ],
-              "description": "Textuelle Beschreibung der Rolle, falls role=Other ausgewählt wird."
+              "description": "Textual description of the role the account holder place during the transaction; use only if the corresponding 'role' field is set to 'other'."
             }
           ],
-          "description": "Textuelle Beschreibung der Rolle, falls role=Other ausgewählt wird."
+          "description": "Textual description of the role the account holder place during the transaction; use only if the corresponding 'role' field is set to 'other'."
         },
         "Currency": {
-          "description": "Währungscode für dieses Konto, Default=EUR.",
+          "description": "Currency code for this account, Default=EUR.",
           "$ref": "#/definitions/CurrencyBaseType"
         },
         "Description": {
-          "description": "Kontobeschreibung.",
+          "description": "Description of this account.",
           "$ref": "#/definitions/AccountDescriptionType"
         }
       },
@@ -870,7 +870,7 @@
           "type": "object",
           "properties": {
             "SignatureVersion": {
-              "description": "Version des Signaturverfahrens.",
+              "description": "Version of the algorithm used for signature creation.",
               "$ref": "#/definitions/SignatureVersionType"
             }
           },
@@ -878,11 +878,11 @@
             "SignatureVersion"
           ],
           "additionalProperties": true,
-          "description": "Version des Signaturverfahrens.",
+          "description": "Version of the algorithm used for signature creation.",
           "$ref": "#/definitions/SignatureVersionType"
         }
       ],
-      "description": "Version des Signaturverfahrens."
+      "description": "Version of the algorithm used for signature creation."
     },
     "PubKeyDigestType": {
       "allOf": [
@@ -891,12 +891,12 @@
         },
         {
           "type": "object",
-          "description": "Hashalgorithmus.",
+          "description": "Name of the used hash algorithm.",
           "properties": {
             "Algorithm": {
               "type": "string",
               "format": "uri",
-              "description": "Hashalgorithmus."
+              "description": "Name of the used hash algorithm."
             }
           },
           "required": [
@@ -905,7 +905,7 @@
           "additionalProperties": true
         }
       ],
-      "description": "Hashalgorithmus."
+      "description": "Name of the used hash algorithm."
     },
     "PubKeyInfoType": {
       "type": "object",
@@ -973,10 +973,10 @@
         },
         {
           "type": "object",
-          "description": "Version des EU-Signaturverfahrens.",
+          "description": "ES-Version.",
           "properties": {
             "SignatureVersion": {
-              "description": "Version des EU-Signaturverfahrens.",
+              "description": "ES-Version.",
               "$ref": "#/definitions/SignatureVersionType"
             }
           },
@@ -987,7 +987,7 @@
           "$ref": "#/definitions/SignatureVersionType"
         }
       ],
-      "description": "Version des EU-Signaturverfahrens."
+      "description": "ES-Version."
     },
     "AuthenticationCertificateInfoType": {
       "allOf": [
@@ -1019,10 +1019,10 @@
         },
         {
           "type": "object",
-          "description": "Version des Verschlüsselungsverfahrens.",
+          "description": "Encryption Version.",
           "properties": {
             "EncryptionVersion": {
-              "description": "Version des Verschlüsselungsverfahrens.",
+              "description": "Encryption Version.",
               "$ref": "#/definitions/EncryptionVersionType"
             }
           },
@@ -1033,11 +1033,11 @@
           "$ref": "#/definitions/EncryptionVersionType"
         }
       ],
-      "description": "Version des Verschlüsselungsverfahrens."
+      "description": "Encryption Version."
     },
     "CertificateInfoType": {
       "type": "object",
-      "description": "Datentyp für die Zertifikate hinsichtlich der \"bank-technical signature for authorisation\" (ES).",
+      "description": "Data Type for Certificates for the bank-technical signature for authorisation (ES)",
       "properties": {
         "ds:X509Data": {
           "$ref": "ds.json#/definitions/X509Data"
@@ -1050,7 +1050,7 @@
     },
     "DataEncryptionInfoType": {
       "type": "object",
-      "description": "Asymmetrisch verschlüsselter symmetrischer Transaktionsschlüssel.",
+      "description": "The asymmetrically encrypted symmetric transaction key.",
       "properties": {
         "EncryptionPubKeyDigest": {
           "allOf": [
@@ -1064,7 +1064,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "Hashwert des öffentlichen Verschlüsselungsschlüssels des Empfängers der verschlüsselten Auftragsdaten.",
+                  "description": "Hash value of the public encryption key owned by the receipient of the encrypted order data.",
                   "required": [
                     "Version"
                   ],
@@ -1074,14 +1074,14 @@
               "required": [
                 "Version"
               ],
-              "description": "Version des Verschlüsselungsverfahrens.",
+              "description": "Version of the encryption method.",
               "$ref": "#/definitions/EncryptionVersionType"
             }
           ],
-          "description": "Version des Verschlüsselungsverfahrens."
+          "description": "Version of the encryption method."
         },
         "TransactionKey": {
-          "description": "Asymmetrisch verschlüsselter symmetrischer Transaktionsschlüssel.",
+          "description": "The asymmetrically encrypted symmetric transaction key.",
           "$ref": "#/definitions/SymmetricKeyType"
         }
       },
@@ -1092,7 +1092,7 @@
       "additionalProperties": true
     },
     "AuthSignature": {
-      "description": "Authentifikationssignatur.",
+      "description": "Authentication signature.",
       "$ref": "ds.json#/definitions/SignatureType"
     }
   }

@@ -1,0 +1,181 @@
+{
+  "title": "./ebicsXML/ebics_signature_S002.xsd",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://www.ebics.org/S002",
+  "description": "[object Object],[object Object]",
+  "type": "object",
+  "properties": {
+    "@abstract": "true",
+    "annotation": {
+      "documentation": [
+        {
+          "@xml:lang": "de",
+          "#text": "XML-Strukturen für bankfachliche Elektronische Unterschriften (EUs)."
+        },
+        {
+          "@xml:lang": "en",
+          "#text": "contains the digital signatures."
+        }
+      ]
+    }
+  },
+  "required": [
+    "EBICSSignatureData"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "UserSignatureData": {
+      "description": "contains the digital signatures.",
+      "$ref": "#/definitions/UserSignatureDataSigBookType"
+    },
+    "OrderSignatureData": {
+      "description": "Digital signature (either autorising an order or applied for transportation), structured format.",
+      "$ref": "#/definitions/OrderSignatureDataType"
+    },
+    "SignaturePubKeyOrderData": {
+      "description": "Element für Public Key Dateien unabhängig von der Auftragsart / Geschäftsvorfall.",
+      "$ref": "#/definitions/SignaturePubKeyOrderDataType"
+    },
+    "SignaturePubKeyInfo": {
+      "description": "öffentlicher Signaturschlüssel.",
+      "$ref": "#/definitions/SignaturePubKeyInfoType"
+    },
+    "UserSignatureDataSigBookType": {
+      "type": "object",
+      "description": "Digital signature (either autorising an order or applied for transportation), structured format.",
+      "properties": {
+        "OrderSignatureData": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "Digital signature (either autorising an order or applied for transportation), structured format.",
+            "$ref": "#/definitions/OrderSignatureDataType"
+          }
+        }
+      },
+      "required": [
+        "OrderSignatureData"
+      ],
+      "additionalProperties": true
+    },
+    "OrderSignatureDataType": {
+      "type": "object",
+      "description": "Parameter for X509Data",
+      "properties": {
+        "SignatureVersion": {
+          "description": "Version of the algorithm used for signature creation.",
+          "$ref": "#/definitions/SignatureVersionType"
+        },
+        "SignatureValue": {
+          "type": "string",
+          "format": "byte",
+          "description": "Digital signature."
+        },
+        "PartnerID": {
+          "description": "Customer ID of the signer.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "User ID.",
+          "$ref": "#/definitions/UserIDType"
+        },
+        "ds:X509Data": {
+          "description": "Parameter for X509Data",
+          "$ref": "ds.json#/definitions/X509Data"
+        }
+      },
+      "required": [
+        "SignatureVersion",
+        "SignatureValue",
+        "PartnerID",
+        "UserID"
+      ],
+      "additionalProperties": false
+    },
+    "SignaturePubKeyOrderDataType": {
+      "type": "object",
+      "description": "Teilnehmer-ID.",
+      "properties": {
+        "SignaturePubKeyInfo": {
+          "description": "öffentlicher Signaturschlüssel.",
+          "$ref": "#/definitions/SignaturePubKeyInfoType"
+        },
+        "PartnerID": {
+          "description": "Kunden-ID.",
+          "$ref": "#/definitions/PartnerIDType"
+        },
+        "UserID": {
+          "description": "Teilnehmer-ID.",
+          "$ref": "#/definitions/UserIDType"
+        }
+      },
+      "required": [
+        "SignaturePubKeyInfo",
+        "PartnerID",
+        "UserID"
+      ],
+      "additionalProperties": true
+    },
+    "SignaturePubKeyInfoType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/PubKeyInfoType"
+        },
+        {
+          "type": "object",
+          "description": "Version des EU-Signaturverfahrens.",
+          "properties": {
+            "SignatureVersion": {
+              "description": "Version des EU-Signaturverfahrens.",
+              "$ref": "#/definitions/SignatureVersionType"
+            }
+          },
+          "required": [
+            "SignatureVersion"
+          ],
+          "additionalProperties": true,
+          "$ref": "#/definitions/SignatureVersionType"
+        }
+      ],
+      "description": "Version des EU-Signaturverfahrens."
+    },
+    "PubKeyInfoType": {
+      "type": "object",
+      "description": "Datentyp für die Darstellung eines öffentlichen RSA-Schlüssels als Exponent-Modulus-Kombination oder als X509-Zertifikat.",
+      "properties": {
+        "ds:X509Data": {
+          "$ref": "ds.json#/definitions/X509Data"
+        }
+      },
+      "required": [
+        "ds:X509Data"
+      ],
+      "additionalProperties": true
+    },
+    "OrderSignatureType": {
+      "type": "string",
+      "format": "byte",
+      "description": "Datentyp für kryptographische Unterschriften."
+    },
+    "PartnerIDType": {
+      "type": "string",
+      "description": "Datentyp für eine Kunden-ID.",
+      "maxLength": 35
+    },
+    "UserIDType": {
+      "type": "string",
+      "description": "Datentyp für eine Teilnehmer-ID.",
+      "maxLength": 35
+    },
+    "SignatureVersionType": {
+      "type": "string",
+      "description": "Datentyp für Versionsnummern zur Elektronischen Unterschrift (EU).",
+      "pattern": "A\\d{3}"
+    },
+    "TimestampType": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Datentyp für Zeitstempel."
+    }
+  }
+}

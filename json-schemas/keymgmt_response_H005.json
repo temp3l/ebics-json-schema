@@ -1,0 +1,190 @@
+{
+  "title": "./ebicsXML/ebics_keymgmt_response_H005.xsd",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "urn:org:ebics:H005",
+  "description": "ebics_keymgmt_response_H005.xsd ist das EBICS-Protokollschema für Schlüsselmanagement-Antwortnachrichten (HIA, HPB, HSA, INI).",
+  "type": "object",
+  "properties": {
+    "annotation": {
+      "documentation": {
+        "@xml:lang": "de",
+        "#text": "Electronic Banking Internet Communication Standard des Zentralen Kreditausschusses (ZKA): Multibankfähige Schnittstelle zur internetbasierten Kommunikation."
+      }
+    },
+    "ebicsKeyManagementResponse": {
+      "properties": {
+        "header": {
+          "type": "object",
+          "description": "enthält alle variablen Headereinträge.",
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "required": [
+                "static",
+                "mutable"
+              ],
+              "$ref": "#/definitions/AuthenticationMarker"
+            },
+            {
+              "properties": {
+                "static": {
+                  "type": "string",
+                  "description": "enhält alle festen Headereinträge."
+                },
+                "mutable": {
+                  "description": "enthält alle variablen Headereinträge.",
+                  "$ref": "#/definitions/KeyMgmntResponseMutableHeaderType"
+                }
+              },
+              "required": [
+                "static",
+                "mutable"
+              ]
+            }
+          ]
+        },
+        "body": {
+          "type": "object",
+          "description": "Zeitstempel der letzten Aktualisierung der Bankparameter; nur in der Initialisierungsphase anzugeben.",
+          "properties": {
+            "DataTransfer": {
+              "type": "object",
+              "description": "enthält Auftragsdaten.",
+              "properties": {
+                "DataEncryptionInfo": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/DataEncryptionInfoType"
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/DataEncryptionInfoType"
+                        },
+                        {
+                          "type": "string",
+                          "description": "Informationen zur Verschlüsselung der Auftragsdaten"
+                        }
+                      ],
+                      "description": "Informationen zur Verschlüsselung der Auftragsdaten"
+                    }
+                  ],
+                  "description": "Informationen zur Verschlüsselung der Auftragsdaten"
+                },
+                "OrderData": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/OrderDataType"
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/OrderDataType"
+                        },
+                        {
+                          "type": "string",
+                          "description": "enthält Auftragsdaten."
+                        }
+                      ],
+                      "description": "enthält Auftragsdaten."
+                    }
+                  ],
+                  "description": "enthält Auftragsdaten."
+                }
+              },
+              "required": [
+                "DataEncryptionInfo",
+                "OrderData"
+              ],
+              "additionalProperties": true
+            },
+            "ReturnCode": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/ReturnCodeType"
+                },
+                {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/ReturnCodeType"
+                    },
+                    {
+                      "type": "string",
+                      "description": "Antwortcode für den vorangegangenen Transfer.",
+                      "$ref": "#/definitions/AuthenticationMarker"
+                    }
+                  ],
+                  "additionalProperties": true,
+                  "description": "Antwortcode für den vorangegangenen Transfer."
+                }
+              ],
+              "description": "Antwortcode für den vorangegangenen Transfer."
+            },
+            "TimestampBankParameter": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/TimestampType"
+                },
+                {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/TimestampType"
+                    },
+                    {
+                      "type": "string",
+                      "description": "Zeitstempel der letzten Aktualisierung der Bankparameter; nur in der Initialisierungsphase anzugeben.",
+                      "$ref": "#/definitions/AuthenticationMarker"
+                    }
+                  ],
+                  "additionalProperties": true,
+                  "description": "Zeitstempel der letzten Aktualisierung der Bankparameter; nur in der Initialisierungsphase anzugeben."
+                }
+              ],
+              "description": "Zeitstempel der letzten Aktualisierung der Bankparameter; nur in der Initialisierungsphase anzugeben."
+            }
+          },
+          "required": [
+            "ReturnCode"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "header",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "description": "Electronic Banking Internet Communication Standard des Zentralen Kreditausschusses (ZKA): Multibankfähige Schnittstelle zur internetbasierten Kommunikation.",
+    "$ref": "#/definitions/VersionAttrGroup"
+  },
+  "required": [
+    "ebicsKeyManagementResponse"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "KeyMgmntResponseMutableHeaderType": {
+      "type": "object",
+      "description": "Klartext der Rückmeldung des Ausführungsstatus.",
+      "properties": {
+        "OrderID": {
+          "description": "Auftragsnummer von Sendeaufträgen gemäß DFÜ-Abkommen (used for all key management order types except download order type HPB).",
+          "$ref": "#/definitions/OrderIDType"
+        },
+        "ReturnCode": {
+          "description": "Rückmeldung des Ausführungsstatus mit einer eindeutigen Fehlernummer.",
+          "$ref": "#/definitions/ReturnCodeType"
+        },
+        "ReportText": {
+          "description": "Klartext der Rückmeldung des Ausführungsstatus.",
+          "$ref": "#/definitions/ReportTextType"
+        }
+      },
+      "required": [
+        "ReturnCode",
+        "ReportText"
+      ],
+      "additionalProperties": true
+    }
+  }
+}
