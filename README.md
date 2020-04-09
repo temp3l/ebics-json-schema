@@ -2,8 +2,9 @@
 ### Just a little playground
 ### converting ebics-xml to json-schema
 
-#https://github.com/Mermade/jgeXml/blob/master/testxsd2j.js
+https://github.com/Mermade/jgeXml/blob/master/testxsd2j.js
 
+```bash
 echo "converting: ebics\*types_H0"
 node ./lib/testxsd2j.js ./ebicsXML/ebics_types_H005.xsd ./json-schemas/ebics_types_H005.json
 echo "converting: ebics_orders_H"
@@ -24,3 +25,4 @@ echo "converting: ebics_request"
 node ./lib/testxsd2j.js ./ebicsXML/ebics_request_H005.xsd ./json-schemas/request_H005.json
 echo "converting: ebics_signatur"
 node ./lib/testxsd2j.js ./ebicsXML/ebics_signature_S002.xsd ./json-schemas/signature_S002.json
+```
