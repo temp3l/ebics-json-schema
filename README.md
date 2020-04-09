@@ -1,3 +1,7 @@
+
+### Just a little playground
+### converting ebics-xml to json-schema
+
 #https://github.com/Mermade/jgeXml/blob/master/testxsd2j.js
 
 echo "converting: ebics\*types_H0"
