@@ -17,7 +17,6 @@ files.forEach((fileName) => {
     var obj = x2j.xml2json(xml, { attributePrefix: '@', valueProperty: 'simpleType', coerceTypes: false });
     //console.log(JSON.stringify(obj, null, 4));
     var json = xsd.getJsonSchema(obj, fp, '', -1, 'xs:');
-    console.log('Same (should be false): ' + (obj == json));
 
     console.log(JSON.stringify(json, null, 4));
   });

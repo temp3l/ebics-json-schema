@@ -1,0 +1,1100 @@
+{
+  "title": "../ebics_3.0_schema_H005FinalVersion07-08-2017/ebics_types_H005.xsd",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "urn:org:ebics:H005",
+  "description": "ebics_types_H005.xsd enthält einfache Typdefinitionen für EBICS.",
+  "type": "object",
+  "properties": {
+    "annotation": {
+      
+      "documentation": [
+        {
+          "@xml:lang": "de",
+          "#text": "generic parameter"
+        },
+        {
+          "@xml:lang": "en",
+          "#text": "Generic key value parameters."
+        }
+      ]
+    },
+    "Parameter": {
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "name of parameter"
+        },
+        "Value": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/anySimpleType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/anySimpleType"
+                },
+                {
+                  "type": "string",
+                  "description": "value of parameter",
+                  "required": [
+                    "Type"
+                  ]
+                }
+              ],
+              "required": [
+                "Type"
+              ],
+              "description": "XML-Typ des Parameterwerts (Vorschlag für default ist string)."
+            }
+          ],
+          "description": "XML-Typ des Parameterwerts (Vorschlag für default ist string)."
+        }
+      },
+      "required": [
+        "Name",
+        "Value"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "Parameter"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "ProtocolVersionType": {
+      "type": "string",
+      "description": "Datentyp für EBICS-Versionsnummern.",
+      "pattern": "H\\d{3}"
+    },
+    "ProtocolRevisionType": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Datentyp für EBICS-Revisionsnummern."
+    },
+    "EncryptionVersionType": {
+      "type": "string",
+      "description": "Datentyp für Versionsnummern zur Verschlüsselung.",
+      "pattern": "E\\d{3}"
+    },
+    "SignatureVersionType": {
+      "type": "string",
+      "description": "Datentyp für Versionsnummern zur Elektronischen Unterschrift (EU).",
+      "pattern": "A\\d{3}"
+    },
+    "AuthenticationVersionType": {
+      "type": "string",
+      "description": "Datentyp für Versionsnummern zur Authentifikation.",
+      "pattern": "X\\d{3}"
+    },
+    "CryptoVersionType": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/EncryptionVersionType"
+        },
+        {
+          "$ref": "#/definitions/SignatureVersionType"
+        },
+        {
+          "$ref": "#/definitions/AuthenticationVersionType"
+        }
+      ],
+      "description": "Datentyp für Versionsnummern zur Verschlüsselung, Signatur und Authentifkation.",
+      "additionalProperties": false
+    },
+    "CurrencyBaseType": {
+      "type": "string",
+      "description": "Datentyp für Währungen (Grundtyp).",
+      "pattern": "[A-Z]{3}"
+    },
+    "CurrencyCode": {
+      "description": "dreistelliger Währungscode gemäß ISO 4217.",
+      "enum": [
+        "AFN",
+        "ALL",
+        "AMD",
+        "ANG",
+        "AOA",
+        "ARS",
+        "AUD",
+        "AWG",
+        "AZM",
+        "BAM",
+        "BBD",
+        "BDT",
+        "BGN",
+        "BHD",
+        "BMD",
+        "BND",
+        "BOB",
+        "BRL",
+        "BSD",
+        "BTN",
+        "BWP",
+        "BYR",
+        "BZD",
+        "CAD",
+        "CDF",
+        "CHF",
+        "CLP",
+        "CNY",
+        "COP",
+        "CRC",
+        "CSD",
+        "CUP",
+        "CVE",
+        "CYP",
+        "CZK",
+        "DJV",
+        "DKK",
+        "DOP",
+        "DZD",
+        "ECS",
+        "EEK",
+        "EGP",
+        "ETB",
+        "EUR",
+        "FJD",
+        "FKP",
+        "GBP",
+        "GEL",
+        "GHC",
+        "GIP",
+        "GMD",
+        "GNF",
+        "GTQ",
+        "GYD",
+        "HKD",
+        "HNL",
+        "HRK",
+        "HTG",
+        "HUF",
+        "IDR",
+        "ILS",
+        "INR",
+        "IQD",
+        "IRR",
+        "ISK",
+        "JMD",
+        "JOD",
+        "JPY",
+        "KES",
+        "KGS",
+        "KHR",
+        "KMF",
+        "KPW",
+        "KRW",
+        "KWD",
+        "KYD",
+        "KZT",
+        "LAK",
+        "LBP",
+        "LKR",
+        "LRD",
+        "LSL",
+        "LTL",
+        "LVL",
+        "LYD",
+        "MAD",
+        "MDL",
+        "MGF",
+        "MKD",
+        "MMK",
+        "MNT",
+        "MOP",
+        "MRO",
+        "MTL",
+        "MUR",
+        "MVR",
+        "MWK",
+        "MXN",
+        "MYR",
+        "MZM",
+        "NAD",
+        "NGN",
+        "NIO",
+        "NOK",
+        "NPR",
+        "NZD",
+        "OMR",
+        "PAB",
+        "PEN",
+        "PGK",
+        "PHP",
+        "PKR",
+        "PLN",
+        "PYG",
+        "QAR",
+        "ROL",
+        "RUB",
+        "RWF",
+        "SAR",
+        "SBD",
+        "SCR",
+        "SDD",
+        "SEK",
+        "SGD",
+        "SHP",
+        "SIT",
+        "SKK",
+        "SLL",
+        "SOS",
+        "SRD",
+        "STD",
+        "SVC",
+        "SYP",
+        "SZL",
+        "THB",
+        "TJS",
+        "TMM",
+        "TND",
+        "TOP",
+        "TRL",
+        "TRY",
+        "TTD",
+        "TWD",
+        "TZS",
+        "UAH",
+        "UGX",
+        "USD",
+        "UYU",
+        "UZS",
+        "VEB",
+        "VND",
+        "VUV",
+        "WST",
+        "XAF",
+        "XCD",
+        "XOF",
+        "XPF",
+        "XTS",
+        "XXX",
+        "YER",
+        "ZAR",
+        "ZMK",
+        "ZWD"
+      ]
+    },
+    "AmountValueType": {
+      "type": "number",
+      "description": "Datentyp für einen Betragswert (ohne Währung)."
+    },
+    "TransactionIDType": {
+      "type": "string",
+      "format": "^[0-9,a-f,A-F]*",
+      "description": "Datentyp für die Transaktions-ID."
+    },
+    "NonceType": {
+      "type": "string",
+      "format": "^[0-9,a-f,A-F]*",
+      "description": "Datentyp für Nonces."
+    },
+    "InstituteIDType": {
+      "type": "string",
+      "description": "Datentyp für die Instituts-ID.",
+      "maxLength": 64
+    },
+    "HostIDType": {
+      "type": "string",
+      "description": "Datentyp für die Host-ID.",
+      "maxLength": 35
+    },
+    "ProductType": {
+      "type": "string",
+      "description": "Datentyp für die Kundenprodukt-ID.",
+      "maxLength": 64
+    },
+    "LanguageType": {
+      "type": "string",
+      "pattern": "[a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*",
+      "description": "Datentyp für das Sprachkennzeichen des Kundenprodukts."
+    },
+    "OrderTBaseType": {
+      "type": "string",
+      "description": "Datentyp für allgemeine Auftragsarten (Grundtyp).",
+      "pattern": "[A-Z0-9]{3}"
+    },
+    "OrderIDType": {
+      "type": "string",
+      "description": "Datentyp für eine Auftragsnummer lt. DFÜ-Abkommen.",
+      "pattern": "[A-Z][A-Z0-9]{3}"
+    },
+    "SecurityMediumType": {
+      "type": "string",
+      "description": "Datentyp für das Sicherheitsmedium.",
+      "pattern": "\\d{4}"
+    },
+    "SegmentNumberType": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Datentyp für die Segmentnummer."
+    },
+    "NumSegmentsType": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Datentyp für die Gesamtsegmentanzahl."
+    },
+    "NumOrderInfosType": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Datentyp für die Gesamtanzahl der Einzelauftraginfos."
+    },
+    "TransactionPhaseType": {
+      "description": "Datentyp für die Transaktionsphase.",
+      "enum": [
+        "Initialisation",
+        "Transfer",
+        "Receipt"
+      ]
+    },
+    "TimestampType": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Datentyp für Zeitstempel."
+    },
+    "DateType": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}.*$",
+      "description": "Datentyp für Datumswerte."
+    },
+    "UserIDType": {
+      "type": "string",
+      "description": "Datentyp für eine Teilnehmer-ID.",
+      "maxLength": 35,
+      "pattern": "[a-zA-Z0-9,=]{1,35}"
+    },
+    "PartnerIDType": {
+      "type": "string",
+      "description": "Datentyp für eine Kunden-ID.",
+      "maxLength": 35,
+      "pattern": "[a-zA-Z0-9,=]{1,35}"
+    },
+    "AccountIDType": {
+      "type": "string",
+      "description": "Datentyp für eine Konten-ID.",
+      "maxLength": 64
+    },
+    "AccountNumberType": {
+      "type": "string",
+      "description": "Datentyp für eine Kontonummer (national/international).",
+      "maxLength": 40,
+      "pattern": "\\d{3,10}|([A-Z]{2}\\d{2}[A-Za-z0-9]{3,30})"
+    },
+    "BankCodeType": {
+      "type": "string",
+      "description": "Datentyp für eine Bankleitzahl (national/international).",
+      "maxLength": 11,
+      "pattern": "\\d{8}|([A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?)"
+    },
+    "BankCodePrefixType": {
+      "type": "string",
+      "description": "Datentyp für ein nationales BLZ-Präfix."
+    },
+    "NationalAccountNumberType": {
+      "type": "string",
+      "description": "Datentyp für eine Kontonummer (freies Format).",
+      "maxLength": 40
+    },
+    "NationalBankCodeType": {
+      "type": "string",
+      "description": "Datentyp für eine Bankleitzahl (freies Format).",
+      "maxLength": 30
+    },
+    "AccountHolderType": {
+      "type": "string",
+      "description": "Datentyp für den Namen des Kontoinhabers."
+    },
+    "AccountDescriptionType": {
+      "type": "string",
+      "description": "Datentyp für die Kontobeschreibung."
+    },
+    "AccountNumberRoleType": {
+      "description": "Datentyp für die Rolle eines Zahlungsverkehrskontos innerhalb einer Transaktion.",
+      "enum": [
+        "Originator",
+        "Recipient",
+        "Charges",
+        "Other"
+      ]
+    },
+    "BankCodeRoleType": {
+      "description": "Datentyp für die Rolle eines Kreditinstituts innerhalb einer Transaktion (repräsentiert durch die Bankleitzahl).",
+      "enum": [
+        "Originator",
+        "Recipient",
+        "Correspondent",
+        "Other"
+      ]
+    },
+    "AccountHolderRoleType": {
+      "description": "Datentyp für die Rolle eines Kontoinhabers innerhalb einer Transaktion.",
+      "enum": [
+        "Originator",
+        "Recipient",
+        "Presenter",
+        "Other"
+      ]
+    },
+    "SignatureDataType": {
+      "type": "string",
+      "format": "byte",
+      "description": "Datentyp für binäre Signaturdaten (komprimiert, verschlüsselt und kodiert)."
+    },
+    "OrderDataType": {
+      "type": "string",
+      "format": "byte",
+      "description": "Datentyp für binäre Auftragsdaten (komprimiert, verschlüsselt und kodiert)."
+    },
+    "AuthorisationLevelType": {
+      "description": "Datentyp für Berechtigungsklassen zur Elektronischen Unterschrift.",
+      "enum": [
+        "E",
+        "A",
+        "B",
+        "T"
+      ]
+    },
+    "AuthorisationLevelListType": {
+      "type": "string",
+      "description": "Listentyp für Berechtigungsklassen zur Elektronischen Unterschrift."
+    },
+    "DigestAlgorithmType": {
+      "type": "string",
+      "format": "uri"
+    },
+    "DigestType": {
+      "description": "Datentyp für Hashwerte.",
+      "$ref": "ds.json#/definitions/DigestValueType"
+    },
+    "SignatureType": {
+      "type": "string",
+      "format": "byte",
+      "description": "Datentyp für kryptographische Unterschriften."
+    },
+    "SymmetricKeyType": {
+      "type": "string",
+      "format": "byte",
+      "description": "Datentyp für symmetrische Schlüssel."
+    },
+    "ReturnCodeType": {
+      "type": "string",
+      "description": "Datentyp für Antwortcodes.",
+      "pattern": "\\d{6}"
+    },
+    "ReportTextType": {
+      "type": "string",
+      "description": "Datentyp für den Erklärungstext zum Antwortcode.",
+      "maxLength": 256
+    },
+    "ReceiptCodeType": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Datentyp für Quittierungscodes."
+    },
+    "NameType": {
+      "type": "string",
+      "description": "Datentyp für Kunden-, Teilnehmer-, Straßen- oder Ortsnamen."
+    },
+    "OrderDescriptionType": {
+      "type": "string",
+      "description": "Datentyp für die Beschreibung von Auftragsarten.",
+      "maxLength": 128
+    },
+    "UserStatusType": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Datentyp für den Teilnehmerstatus."
+    },
+    "String255Type": {
+      "type": "string",
+      "description": "String up to 255 characters.",
+      "maxLength": 255
+    },
+    "CodeStringType": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10,
+      "pattern": "[A-Z0-9]*"
+    },
+    "NumStringType": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 3,
+      "pattern": "[0-9]*"
+    },
+    "FileNameStringType": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "MessageNameStringType": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10,
+      "pattern": "[a-z\\.0-9]*"
+    },
+    "ServiceNameStringType": {
+      "$ref": "#/definitions/CodeStringType",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "ScopeStringType": {
+      "$ref": "#/definitions/CodeStringType",
+      "minLength": 2,
+      "maxLength": 3
+    },
+    "ServiceOptionStringType": {
+      "$ref": "#/definitions/CodeStringType",
+      "minLength": 3
+    },
+    "ContainerStringType": {
+      "enum": [
+        "SVC",
+        "XML",
+        "ZIP"
+      ],
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "AmountType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AmountValueType"
+        },
+        {
+          "type": "object",
+          "description": "Währungscode, Default=\"EUR\".",
+          "properties": {
+            "Currency": {
+              "description": "Währungscode, Default=\"EUR\".",
+              "$ref": "#/definitions/CurrencyBaseType"
+            }
+          },
+          "additionalProperties": true,
+          "$ref": "#/definitions/CurrencyBaseType"
+        }
+      ],
+      "description": "Währungscode, Default=\"EUR\"."
+    },
+    "AccountType": {
+      "type": "object",
+      "description": "Kontobeschreibung.",
+      "properties": {
+        "AccountNumber": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/AccountNumberType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/AccountNumberType"
+                },
+                {
+                  "type": "string",
+                  "description": "Kontonummer (deutsches Format und/oder international als IBAN)."
+                }
+              ],
+              "description": "Ist die Kontonummer im deutschen Format (international=false) oder im internationalen Format (international=true, IBAN) angegeben?"
+            }
+          ],
+          "description": "Ist die Kontonummer im deutschen Format (international=false) oder im internationalen Format (international=true, IBAN) angegeben?"
+        },
+        "NationalAccountNumber": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/NationalAccountNumberType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/NationalAccountNumberType"
+                },
+                {
+                  "type": "string",
+                  "description": "Kontonummer im freien Format.",
+                  "required": [
+                    "format"
+                  ]
+                }
+              ],
+              "required": [
+                "format",
+                "AccountNumber",
+                "NationalAccountNumber"
+              ],
+              "description": "Formatkennung."
+            }
+          ],
+          "description": "Kontonummer im freien Format."
+        },
+        "BankCode": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/BankCodeType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/BankCodeType"
+                },
+                {
+                  "type": "string",
+                  "description": "Bankleitzahl (deutsches Format und/oder international als SWIFT-BIC).",
+                  "$ref": "#/definitions/BankCodePrefixType"
+                }
+              ],
+              "description": "nationales Präfix für Bankleitzahlen.",
+              "$ref": "#/definitions/BankCodePrefixType"
+            }
+          ],
+          "description": "nationales Präfix für Bankleitzahlen."
+        },
+        "NationalBankCode": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/NationalBankCodeType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/NationalBankCodeType"
+                },
+                {
+                  "type": "string",
+                  "description": "Bankleitzahl im freien Format.",
+                  "required": [
+                    "format"
+                  ]
+                }
+              ],
+              "required": [
+                "format",
+                "BankCode",
+                "NationalBankCode"
+              ],
+              "description": "Formatkennung."
+            }
+          ],
+          "description": "Bankleitzahl im freien Format."
+        },
+        "AccountHolder": {
+          "description": "Name des Kontoinhabers.",
+          "$ref": "#/definitions/AccountHolderType"
+        },
+        "Currency": {
+          "description": "Währungscode für dieses Konto, Default=EUR.",
+          "$ref": "#/definitions/CurrencyBaseType"
+        },
+        "Description": {
+          "description": "Kontobeschreibung.",
+          "$ref": "#/definitions/AccountDescriptionType"
+        }
+      },
+      "required": [
+        "AccountNumber",
+        "NationalAccountNumber",
+        "BankCode",
+        "NationalBankCode"
+      ],
+      "additionalProperties": false
+    },
+    "AttributedAccountType": {
+      "type": "object",
+      "description": "Kontobeschreibung.",
+      "properties": {
+        "AccountNumber": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/AccountNumberType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/AccountNumberType"
+                },
+                {
+                  "type": "string",
+                  "description": "Kontonummer (deutsches Format oder international als IBAN).",
+                  "required": [
+                    "Role"
+                  ]
+                }
+              ],
+              "required": [
+                "Role"
+              ],
+              "description": "Ist die Kontonummer im deutschen Format (international=false) oder im internationalen Format (international=true, IBAN) angegeben?"
+            }
+          ],
+          "description": "Ist die Kontonummer im deutschen Format (international=false) oder im internationalen Format (international=true, IBAN) angegeben?"
+        },
+        "NationalAccountNumber": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/NationalAccountNumberType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/NationalAccountNumberType"
+                },
+                {
+                  "type": "string",
+                  "description": "Kontonummer im freien Format.",
+                  "required": [
+                    "Role",
+                    "format"
+                  ]
+                }
+              ],
+              "required": [
+                "Role",
+                "format",
+                "AccountNumber",
+                "NationalAccountNumber"
+              ],
+              "description": "Formatkennung."
+            }
+          ],
+          "description": "Kontonummer im freien Format."
+        },
+        "BankCode": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/BankCodeType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/BankCodeType"
+                },
+                {
+                  "type": "string",
+                  "description": "Bankleitzahl (deutsches Format oder international als SWIFT-BIC).",
+                  "required": [
+                    "Role"
+                  ],
+                  "$ref": "#/definitions/BankCodePrefixType"
+                }
+              ],
+              "required": [
+                "Role"
+              ],
+              "description": "nationales Präfix für Bankleitzahlen.",
+              "$ref": "#/definitions/BankCodePrefixType"
+            }
+          ],
+          "description": "nationales Präfix für Bankleitzahlen."
+        },
+        "NationalBankCode": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/NationalBankCodeType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/NationalBankCodeType"
+                },
+                {
+                  "type": "string",
+                  "description": "Bankleitzahl im freien Format.",
+                  "required": [
+                    "Role",
+                    "format"
+                  ]
+                }
+              ],
+              "required": [
+                "Role",
+                "format",
+                "BankCode",
+                "NationalBankCode"
+              ],
+              "description": "Formatkennung."
+            }
+          ],
+          "description": "Bankleitzahl im freien Format."
+        },
+        "AccountHolder": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/AccountHolderType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/AccountHolderType"
+                },
+                {
+                  "type": "string",
+                  "description": "Name des Kontoinhabers.",
+                  "required": [
+                    "Role"
+                  ]
+                }
+              ],
+              "required": [
+                "Role"
+              ],
+              "description": "Textuelle Beschreibung der Rolle, falls role=Other ausgewählt wird."
+            }
+          ],
+          "description": "Textuelle Beschreibung der Rolle, falls role=Other ausgewählt wird."
+        },
+        "Currency": {
+          "description": "Währungscode für dieses Konto, Default=EUR.",
+          "$ref": "#/definitions/CurrencyBaseType"
+        },
+        "Description": {
+          "description": "Kontobeschreibung.",
+          "$ref": "#/definitions/AccountDescriptionType"
+        }
+      },
+      "required": [
+        "AccountNumber",
+        "NationalAccountNumber",
+        "BankCode",
+        "NationalBankCode"
+      ],
+      "additionalProperties": false
+    },
+    "DataDigestType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/DigestType"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "SignatureVersion": {
+              "description": "Version des Signaturverfahrens.",
+              "$ref": "#/definitions/SignatureVersionType"
+            }
+          },
+          "required": [
+            "SignatureVersion"
+          ],
+          "additionalProperties": true,
+          "description": "Version des Signaturverfahrens.",
+          "$ref": "#/definitions/SignatureVersionType"
+        }
+      ],
+      "description": "Version des Signaturverfahrens."
+    },
+    "PubKeyDigestType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/DigestType"
+        },
+        {
+          "type": "object",
+          "description": "Hashalgorithmus.",
+          "properties": {
+            "Algorithm": {
+              "type": "string",
+              "format": "uri",
+              "description": "Hashalgorithmus."
+            }
+          },
+          "required": [
+            "Algorithm"
+          ],
+          "additionalProperties": true
+        }
+      ],
+      "description": "Hashalgorithmus."
+    },
+    "PubKeyInfoType": {
+      "type": "object",
+      "description": "Datentyp für die Darstellung eines öffentlichen RSA-Schlüssels als Exponent-Modulus-Kombination oder als X509-Zertifikat.",
+      "properties": {
+        "ds:X509Data": {
+          "$ref": "ds.json#/definitions/X509Data"
+        }
+      },
+      "required": [
+        "ds:X509Data"
+      ],
+      "additionalProperties": true
+    },
+    "EncryptionPubKeyInfoType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/PubKeyInfoType"
+        },
+        {
+          "type": "object",
+          "description": "Version des Verschlüsselungsverfahrens.",
+          "properties": {
+            "EncryptionVersion": {
+              "description": "Version des Verschlüsselungsverfahrens.",
+              "$ref": "#/definitions/EncryptionVersionType"
+            }
+          },
+          "required": [
+            "EncryptionVersion"
+          ],
+          "additionalProperties": true,
+          "$ref": "#/definitions/EncryptionVersionType"
+        }
+      ],
+      "description": "Version des Verschlüsselungsverfahrens."
+    },
+    "AuthenticationPubKeyInfoType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/PubKeyInfoType"
+        },
+        {
+          "type": "object",
+          "description": "Version des Authentifikationsverfahrens.",
+          "properties": {
+            "AuthenticationVersion": {
+              "description": "Version des Authentifikationsverfahrens.",
+              "$ref": "#/definitions/AuthenticationVersionType"
+            }
+          },
+          "required": [
+            "AuthenticationVersion"
+          ],
+          "additionalProperties": true,
+          "$ref": "#/definitions/AuthenticationVersionType"
+        }
+      ],
+      "description": "Version des Authentifikationsverfahrens."
+    },
+    "SignatureCertificateInfoType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/CertificateInfoType"
+        },
+        {
+          "type": "object",
+          "description": "Version des EU-Signaturverfahrens.",
+          "properties": {
+            "SignatureVersion": {
+              "description": "Version des EU-Signaturverfahrens.",
+              "$ref": "#/definitions/SignatureVersionType"
+            }
+          },
+          "required": [
+            "SignatureVersion"
+          ],
+          "additionalProperties": true,
+          "$ref": "#/definitions/SignatureVersionType"
+        }
+      ],
+      "description": "Version des EU-Signaturverfahrens."
+    },
+    "AuthenticationCertificateInfoType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/CertificateInfoType"
+        },
+        {
+          "type": "object",
+          "description": "Version des Authentifikationsverfahrens.",
+          "properties": {
+            "AuthenticationVersion": {
+              "description": "Version des Authentifikationsverfahrens.",
+              "$ref": "#/definitions/AuthenticationVersionType"
+            }
+          },
+          "required": [
+            "AuthenticationVersion"
+          ],
+          "additionalProperties": true,
+          "$ref": "#/definitions/AuthenticationVersionType"
+        }
+      ],
+      "description": "Version des Authentifikationsverfahrens."
+    },
+    "EncryptionCertificateInfoType": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/CertificateInfoType"
+        },
+        {
+          "type": "object",
+          "description": "Version des Verschlüsselungsverfahrens.",
+          "properties": {
+            "EncryptionVersion": {
+              "description": "Version des Verschlüsselungsverfahrens.",
+              "$ref": "#/definitions/EncryptionVersionType"
+            }
+          },
+          "required": [
+            "EncryptionVersion"
+          ],
+          "additionalProperties": true,
+          "$ref": "#/definitions/EncryptionVersionType"
+        }
+      ],
+      "description": "Version des Verschlüsselungsverfahrens."
+    },
+    "CertificateInfoType": {
+      "type": "object",
+      "description": "Datentyp für die Zertifikate hinsichtlich der \"bank-technical signature for authorisation\" (ES).",
+      "properties": {
+        "ds:X509Data": {
+          "$ref": "ds.json#/definitions/X509Data"
+        }
+      },
+      "required": [
+        "ds:X509Data"
+      ],
+      "additionalProperties": true
+    },
+    "DataEncryptionInfoType": {
+      "type": "object",
+      "description": "Asymmetrisch verschlüsselter symmetrischer Transaktionsschlüssel.",
+      "properties": {
+        "EncryptionPubKeyDigest": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/PubKeyDigestType"
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/PubKeyDigestType"
+                },
+                {
+                  "type": "string",
+                  "description": "Hashwert des öffentlichen Verschlüsselungsschlüssels des Empfängers der verschlüsselten Auftragsdaten.",
+                  "required": [
+                    "Version"
+                  ],
+                  "$ref": "#/definitions/EncryptionVersionType"
+                }
+              ],
+              "required": [
+                "Version"
+              ],
+              "description": "Version des Verschlüsselungsverfahrens.",
+              "$ref": "#/definitions/EncryptionVersionType"
+            }
+          ],
+          "description": "Version des Verschlüsselungsverfahrens."
+        },
+        "TransactionKey": {
+          "description": "Asymmetrisch verschlüsselter symmetrischer Transaktionsschlüssel.",
+          "$ref": "#/definitions/SymmetricKeyType"
+        }
+      },
+      "required": [
+        "EncryptionPubKeyDigest",
+        "TransactionKey"
+      ],
+      "additionalProperties": true
+    },
+    "AuthSignature": {
+      "description": "Authentifikationssignatur.",
+      "$ref": "ds.json#/definitions/SignatureType"
+    }
+  }
+}
