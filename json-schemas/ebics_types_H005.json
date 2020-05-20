@@ -5,18 +5,6 @@
   "description": "ebics_types_H005.xsd enthält einfache Typdefinitionen für EBICS.",
   "type": "object",
   "properties": {
-    "annotation": {
-      "documentation": [
-        {
-          "@xml:lang": "de",
-          "#text": "generic parameter"
-        },
-        {
-          "@xml:lang": "en",
-          "#text": "Generic key value parameters."
-        }
-      ]
-    },
     "Parameter": {
       "properties": {
         "Name": {
@@ -36,30 +24,21 @@
                 {
                   "type": "string",
                   "description": "Value of the parameter.",
-                  "required": [
-                    "Type"
-                  ]
+                  "required": ["Type"]
                 }
               ],
-              "required": [
-                "Type"
-              ],
+              "required": ["Type"],
               "description": "XML type of the parameter value (Proposal for default is string)."
             }
           ],
           "description": "XML type of the parameter value (Proposal for default is string)."
         }
       },
-      "required": [
-        "Name",
-        "Value"
-      ],
+      "required": ["Name", "Value"],
       "additionalProperties": false
     }
   },
-  "required": [
-    "Parameter"
-  ],
+  "required": ["Parameter"],
   "additionalProperties": false,
   "definitions": {
     "ProtocolVersionType": {
@@ -342,11 +321,7 @@
     },
     "TransactionPhaseType": {
       "description": "Datentyp für die Transaktionsphase.",
-      "enum": [
-        "Initialisation",
-        "Transfer",
-        "Receipt"
-      ]
+      "enum": ["Initialisation", "Transfer", "Receipt"]
     },
     "TimestampType": {
       "type": "string",
@@ -411,30 +386,15 @@
     },
     "AccountNumberRoleType": {
       "description": "Datentyp für die Rolle eines Zahlungsverkehrskontos innerhalb einer Transaktion.",
-      "enum": [
-        "Originator",
-        "Recipient",
-        "Charges",
-        "Other"
-      ]
+      "enum": ["Originator", "Recipient", "Charges", "Other"]
     },
     "BankCodeRoleType": {
       "description": "Datentyp für die Rolle eines Kreditinstituts innerhalb einer Transaktion (repräsentiert durch die Bankleitzahl).",
-      "enum": [
-        "Originator",
-        "Recipient",
-        "Correspondent",
-        "Other"
-      ]
+      "enum": ["Originator", "Recipient", "Correspondent", "Other"]
     },
     "AccountHolderRoleType": {
       "description": "Datentyp für die Rolle eines Kontoinhabers innerhalb einer Transaktion.",
-      "enum": [
-        "Originator",
-        "Recipient",
-        "Presenter",
-        "Other"
-      ]
+      "enum": ["Originator", "Recipient", "Presenter", "Other"]
     },
     "SignatureDataType": {
       "type": "string",
@@ -448,12 +408,7 @@
     },
     "AuthorisationLevelType": {
       "description": "Datentyp für Berechtigungsklassen zur Elektronischen Unterschrift.",
-      "enum": [
-        "E",
-        "A",
-        "B",
-        "T"
-      ]
+      "enum": ["E", "A", "B", "T"]
     },
     "AuthorisationLevelListType": {
       "type": "string",
@@ -549,11 +504,7 @@
       "minLength": 3
     },
     "ContainerStringType": {
-      "enum": [
-        "SVC",
-        "XML",
-        "ZIP"
-      ],
+      "enum": ["SVC", "XML", "ZIP"],
       "minLength": 3,
       "maxLength": 3
     },
@@ -614,16 +565,10 @@
                 {
                   "type": "string",
                   "description": "Account in free format.",
-                  "required": [
-                    "format"
-                  ]
+                  "required": ["format"]
                 }
               ],
-              "required": [
-                "format",
-                "AccountNumber",
-                "NationalAccountNumber"
-              ],
+              "required": ["format", "AccountNumber", "NationalAccountNumber"],
               "description": "Format identification."
             }
           ],
@@ -664,16 +609,10 @@
                 {
                   "type": "string",
                   "description": "Bank code in free format.",
-                  "required": [
-                    "format"
-                  ]
+                  "required": ["format"]
                 }
               ],
-              "required": [
-                "format",
-                "BankCode",
-                "NationalBankCode"
-              ],
+              "required": ["format", "BankCode", "NationalBankCode"],
               "description": "Format identification."
             }
           ],
@@ -692,12 +631,7 @@
           "$ref": "#/definitions/AccountDescriptionType"
         }
       },
-      "required": [
-        "AccountNumber",
-        "NationalAccountNumber",
-        "BankCode",
-        "NationalBankCode"
-      ],
+      "required": ["AccountNumber", "NationalAccountNumber", "BankCode", "NationalBankCode"],
       "additionalProperties": false
     },
     "AttributedAccountType": {
@@ -717,14 +651,10 @@
                 {
                   "type": "string",
                   "description": "Kontonummer (Account number (German format and/or international = IBAN).",
-                  "required": [
-                    "Role"
-                  ]
+                  "required": ["Role"]
                 }
               ],
-              "required": [
-                "Role"
-              ],
+              "required": ["Role"],
               "description": "Is the account number specified using the national=German or the international=IBAN format?"
             }
           ],
@@ -743,18 +673,10 @@
                 {
                   "type": "string",
                   "description": "Account in free format.",
-                  "required": [
-                    "Role",
-                    "format"
-                  ]
+                  "required": ["Role", "format"]
                 }
               ],
-              "required": [
-                "Role",
-                "format",
-                "AccountNumber",
-                "NationalAccountNumber"
-              ],
+              "required": ["Role", "format", "AccountNumber", "NationalAccountNumber"],
               "description": "Format identification."
             }
           ],
@@ -773,15 +695,11 @@
                 {
                   "type": "string",
                   "description": "Bank code (German and/or international=SWIFT-BIC).",
-                  "required": [
-                    "Role"
-                  ],
+                  "required": ["Role"],
                   "$ref": "#/definitions/BankCodePrefixType"
                 }
               ],
-              "required": [
-                "Role"
-              ],
+              "required": ["Role"],
               "description": "National=German prefix for bank codes.",
               "$ref": "#/definitions/BankCodePrefixType"
             }
@@ -801,18 +719,10 @@
                 {
                   "type": "string",
                   "description": "Bank code in free format.",
-                  "required": [
-                    "Role",
-                    "format"
-                  ]
+                  "required": ["Role", "format"]
                 }
               ],
-              "required": [
-                "Role",
-                "format",
-                "BankCode",
-                "NationalBankCode"
-              ],
+              "required": ["Role", "format", "BankCode", "NationalBankCode"],
               "description": "Format identification."
             }
           ],
@@ -831,14 +741,10 @@
                 {
                   "type": "string",
                   "description": "Name des Kontoinhabers.",
-                  "required": [
-                    "Role"
-                  ]
+                  "required": ["Role"]
                 }
               ],
-              "required": [
-                "Role"
-              ],
+              "required": ["Role"],
               "description": "Textual description of the role the account holder place during the transaction; use only if the corresponding 'role' field is set to 'other'."
             }
           ],
@@ -853,12 +759,7 @@
           "$ref": "#/definitions/AccountDescriptionType"
         }
       },
-      "required": [
-        "AccountNumber",
-        "NationalAccountNumber",
-        "BankCode",
-        "NationalBankCode"
-      ],
+      "required": ["AccountNumber", "NationalAccountNumber", "BankCode", "NationalBankCode"],
       "additionalProperties": false
     },
     "DataDigestType": {
@@ -874,9 +775,7 @@
               "$ref": "#/definitions/SignatureVersionType"
             }
           },
-          "required": [
-            "SignatureVersion"
-          ],
+          "required": ["SignatureVersion"],
           "additionalProperties": true,
           "description": "Version of the algorithm used for signature creation.",
           "$ref": "#/definitions/SignatureVersionType"
@@ -899,9 +798,7 @@
               "description": "Name of the used hash algorithm."
             }
           },
-          "required": [
-            "Algorithm"
-          ],
+          "required": ["Algorithm"],
           "additionalProperties": true
         }
       ],
@@ -915,9 +812,7 @@
           "$ref": "ds.json#/definitions/X509Data"
         }
       },
-      "required": [
-        "ds:X509Data"
-      ],
+      "required": ["ds:X509Data"],
       "additionalProperties": true
     },
     "EncryptionPubKeyInfoType": {
@@ -934,9 +829,7 @@
               "$ref": "#/definitions/EncryptionVersionType"
             }
           },
-          "required": [
-            "EncryptionVersion"
-          ],
+          "required": ["EncryptionVersion"],
           "additionalProperties": true,
           "$ref": "#/definitions/EncryptionVersionType"
         }
@@ -957,9 +850,7 @@
               "$ref": "#/definitions/AuthenticationVersionType"
             }
           },
-          "required": [
-            "AuthenticationVersion"
-          ],
+          "required": ["AuthenticationVersion"],
           "additionalProperties": true,
           "$ref": "#/definitions/AuthenticationVersionType"
         }
@@ -980,9 +871,7 @@
               "$ref": "#/definitions/SignatureVersionType"
             }
           },
-          "required": [
-            "SignatureVersion"
-          ],
+          "required": ["SignatureVersion"],
           "additionalProperties": true,
           "$ref": "#/definitions/SignatureVersionType"
         }
@@ -1003,9 +892,7 @@
               "$ref": "#/definitions/AuthenticationVersionType"
             }
           },
-          "required": [
-            "AuthenticationVersion"
-          ],
+          "required": ["AuthenticationVersion"],
           "additionalProperties": true,
           "$ref": "#/definitions/AuthenticationVersionType"
         }
@@ -1026,9 +913,7 @@
               "$ref": "#/definitions/EncryptionVersionType"
             }
           },
-          "required": [
-            "EncryptionVersion"
-          ],
+          "required": ["EncryptionVersion"],
           "additionalProperties": true,
           "$ref": "#/definitions/EncryptionVersionType"
         }
@@ -1043,9 +928,7 @@
           "$ref": "ds.json#/definitions/X509Data"
         }
       },
-      "required": [
-        "ds:X509Data"
-      ],
+      "required": ["ds:X509Data"],
       "additionalProperties": true
     },
     "DataEncryptionInfoType": {
@@ -1065,15 +948,11 @@
                 {
                   "type": "string",
                   "description": "Hash value of the public encryption key owned by the receipient of the encrypted order data.",
-                  "required": [
-                    "Version"
-                  ],
+                  "required": ["Version"],
                   "$ref": "#/definitions/EncryptionVersionType"
                 }
               ],
-              "required": [
-                "Version"
-              ],
+              "required": ["Version"],
               "description": "Version of the encryption method.",
               "$ref": "#/definitions/EncryptionVersionType"
             }
@@ -1085,10 +964,7 @@
           "$ref": "#/definitions/SymmetricKeyType"
         }
       },
-      "required": [
-        "EncryptionPubKeyDigest",
-        "TransactionKey"
-      ],
+      "required": ["EncryptionPubKeyDigest", "TransactionKey"],
       "additionalProperties": true
     },
     "AuthSignature": {

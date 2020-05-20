@@ -19,9 +19,7 @@
       ]
     }
   },
-  "required": [
-    "EBICSOrderData"
-  ],
+  "required": ["EBICSOrderData"],
   "additionalProperties": false,
   "definitions": {
     "HAAResponseOrderData": {
@@ -177,11 +175,7 @@
           "$ref": "#/definitions/OrderIDType"
         }
       },
-      "required": [
-        "PartnerID",
-        "Service",
-        "OrderID"
-      ],
+      "required": ["PartnerID", "Service", "OrderID"],
       "additionalProperties": false
     },
     "HVZPaymentOrderDetailsStructure": {
@@ -262,16 +256,10 @@
                         {
                           "type": "string",
                           "description": "Account number in free format.",
-                          "required": [
-                            "format"
-                          ]
+                          "required": ["format"]
                         }
                       ],
-                      "required": [
-                        "format",
-                        "AccountNumber",
-                        "NationalAccountNumber"
-                      ],
+                      "required": ["format", "AccountNumber", "NationalAccountNumber"],
                       "description": "Format type."
                     }
                   ],
@@ -312,28 +300,17 @@
                         {
                           "type": "string",
                           "description": "Bank sort code in free format.",
-                          "required": [
-                            "format"
-                          ]
+                          "required": ["format"]
                         }
                       ],
-                      "required": [
-                        "format",
-                        "BankCode",
-                        "NationalBankCode"
-                      ],
+                      "required": ["format", "BankCode", "NationalBankCode"],
                       "description": "Format type."
                     }
                   ],
                   "description": "Bank sort code in free format."
                 }
               },
-              "required": [
-                "AccountNumber",
-                "NationalAccountNumber",
-                "BankCode",
-                "NationalBankCode"
-              ],
+              "required": ["AccountNumber", "NationalAccountNumber", "BankCode", "NationalBankCode"],
               "additionalProperties": false
             }
           },
@@ -351,9 +328,7 @@
           "description": "The element (and its substructures) that belongs to this attribute is to be authenticated."
         }
       },
-      "required": [
-        "authenticate"
-      ],
+      "required": ["authenticate"],
       "additionalProperties": false
     },
     "OptSupportFlag": {
@@ -376,9 +351,7 @@
           "$ref": "#/definitions/AuthorisationLevelType"
         }
       },
-      "required": [
-        "AuthorisationLevel"
-      ],
+      "required": ["AuthorisationLevel"],
       "additionalProperties": true
     },
     "VersionAttrGroup": {
@@ -394,9 +367,7 @@
           "$ref": "#/definitions/ProtocolRevisionType"
         }
       },
-      "required": [
-        "Version"
-      ],
+      "required": ["Version"],
       "additionalProperties": false
     },
     "BankSignatureDataSigBookType": {
@@ -522,19 +493,12 @@
                   "$ref": "#/definitions/String255Type"
                 }
               },
-              "required": [
-                "DataEncryptionInfo",
-                "SignatureData",
-                "DataDigest",
-                "OrderData"
-              ],
+              "required": ["DataEncryptionInfo", "SignatureData", "DataDigest", "OrderData"],
               "additionalProperties": true,
               "$ref": "#/definitions/String255Type"
             }
           ],
-          "required": [
-            "OrderData"
-          ],
+          "required": ["OrderData"],
           "description": "Additional Information about the order (unstructured, up to 255 characters)."
         }
       ],
@@ -597,10 +561,7 @@
           "description": "contains order data."
         }
       },
-      "required": [
-        "DataEncryptionInfo",
-        "OrderData"
-      ],
+      "required": ["DataEncryptionInfo", "OrderData"],
       "additionalProperties": true
     },
     "TransferReceiptRequestType": {
@@ -612,9 +573,7 @@
           "$ref": "#/definitions/ReceiptCodeType"
         }
       },
-      "required": [
-        "ReceiptCode"
-      ],
+      "required": ["ReceiptCode"],
       "additionalProperties": true
     },
     "TransferReceiptResponseType": {
@@ -630,9 +589,7 @@
           "$ref": "#/definitions/TimestampType"
         }
       },
-      "required": [
-        "ReturnCodeReceipt"
-      ],
+      "required": ["ReturnCodeReceipt"],
       "additionalProperties": true
     },
     "HAAResponseOrderDataType": {
@@ -670,12 +627,7 @@
           "$ref": "#/definitions/UserIDType"
         }
       },
-      "required": [
-        "AuthenticationPubKeyInfo",
-        "EncryptionPubKeyInfo",
-        "PartnerID",
-        "UserID"
-      ],
+      "required": ["AuthenticationPubKeyInfo", "EncryptionPubKeyInfo", "PartnerID", "UserID"],
       "additionalProperties": true
     },
     "HCSRequestOrderDataType": {
@@ -702,13 +654,7 @@
           "$ref": "#/definitions/UserIDType"
         }
       },
-      "required": [
-        "AuthenticationPubKeyInfo",
-        "EncryptionPubKeyInfo",
-        "esig:SignaturePubKeyInfo",
-        "PartnerID",
-        "UserID"
-      ],
+      "required": ["AuthenticationPubKeyInfo", "EncryptionPubKeyInfo", "esig:SignaturePubKeyInfo", "PartnerID", "UserID"],
       "additionalProperties": true
     },
     "HIARequestOrderDataType": {
@@ -732,12 +678,7 @@
           "$ref": "#/definitions/UserIDType"
         }
       },
-      "required": [
-        "AuthenticationPubKeyInfo",
-        "EncryptionPubKeyInfo",
-        "PartnerID",
-        "UserID"
-      ],
+      "required": ["AuthenticationPubKeyInfo", "EncryptionPubKeyInfo", "PartnerID", "UserID"],
       "additionalProperties": true
     },
     "H3KRequestOrderDataType": {
@@ -765,13 +706,7 @@
           "$ref": "#/definitions/UserIDType"
         }
       },
-      "required": [
-        "SignatureCertificateInfo",
-        "AuthenticationCertificateInfo",
-        "EncryptionCertificateInfo",
-        "PartnerID",
-        "UserID"
-      ],
+      "required": ["SignatureCertificateInfo", "AuthenticationCertificateInfo", "EncryptionCertificateInfo", "PartnerID", "UserID"],
       "additionalProperties": false
     },
     "HKDResponseOrderDataType": {
@@ -791,10 +726,7 @@
           }
         }
       },
-      "required": [
-        "PartnerInfo",
-        "UserInfo"
-      ],
+      "required": ["PartnerInfo", "UserInfo"],
       "additionalProperties": true
     },
     "HPBResponseOrderDataType": {
@@ -818,11 +750,7 @@
           "$ref": "#/definitions/HostIDType"
         }
       },
-      "required": [
-        "AuthenticationPubKeyInfo",
-        "EncryptionPubKeyInfo",
-        "HostID"
-      ],
+      "required": ["AuthenticationPubKeyInfo", "EncryptionPubKeyInfo", "HostID"],
       "additionalProperties": true
     },
     "HPDResponseOrderDataType": {
@@ -838,10 +766,7 @@
           "$ref": "#/definitions/HPDProtocolParamsType"
         }
       },
-      "required": [
-        "AccessParams",
-        "ProtocolParams"
-      ],
+      "required": ["AccessParams", "ProtocolParams"],
       "additionalProperties": false
     },
     "HPDAccessParamsType": {
@@ -877,10 +802,7 @@
           "$ref": "#/definitions/HostIDType"
         }
       },
-      "required": [
-        "URL",
-        "Institute"
-      ],
+      "required": ["URL", "Institute"],
       "additionalProperties": true
     },
     "HPDProtocolParamsType": {
@@ -908,9 +830,7 @@
           "description": "Parameter denoting the reception of order types which provides downloadable order data (order type HAA)."
         }
       },
-      "required": [
-        "Version"
-      ],
+      "required": ["Version"],
       "additionalProperties": true
     },
     "HPDVersionType": {
@@ -934,12 +854,7 @@
           "$ref": "esig.json#/definitions/SignatureVersionType"
         }
       },
-      "required": [
-        "Protocol",
-        "Authentication",
-        "Encryption",
-        "Signature"
-      ],
+      "required": ["Protocol", "Authentication", "Encryption", "Signature"],
       "additionalProperties": true
     },
     "HTDReponseOrderDataType": {
@@ -955,10 +870,7 @@
           "$ref": "#/definitions/UserInfoType"
         }
       },
-      "required": [
-        "PartnerInfo",
-        "UserInfo"
-      ],
+      "required": ["PartnerInfo", "UserInfo"],
       "additionalProperties": true
     },
     "HVDResponseOrderDataType": {
@@ -999,13 +911,7 @@
           }
         }
       },
-      "required": [
-        "DataDigest",
-        "DisplayFile",
-        "OrderDataAvailable",
-        "OrderDataSize",
-        "OrderDetailsAvailable"
-      ],
+      "required": ["DataDigest", "DisplayFile", "OrderDataAvailable", "OrderDataSize", "OrderDetailsAvailable"],
       "additionalProperties": true
     },
     "HVDOrderParamsType": {
@@ -1016,9 +922,7 @@
           "$ref": "#/definitions/HVRequestStructure"
         }
       },
-      "required": [
-        "ebics:HVRequestStructure"
-      ],
+      "required": ["ebics:HVRequestStructure"],
       "additionalProperties": true
     },
     "HVEOrderParamsType": {
@@ -1029,9 +933,7 @@
           "$ref": "#/definitions/HVRequestStructure"
         }
       },
-      "required": [
-        "ebics:HVRequestStructure"
-      ],
+      "required": ["ebics:HVRequestStructure"],
       "additionalProperties": true
     },
     "HVSOrderParamsType": {
@@ -1042,9 +944,7 @@
           "$ref": "#/definitions/HVRequestStructure"
         }
       },
-      "required": [
-        "ebics:HVRequestStructure"
-      ],
+      "required": ["ebics:HVRequestStructure"],
       "additionalProperties": true
     },
     "HVSRequestOrderDataType": {
@@ -1056,9 +956,7 @@
           "$ref": "#/definitions/DataDigestType"
         }
       },
-      "required": [
-        "CancelledDataDigest"
-      ],
+      "required": ["CancelledDataDigest"],
       "additionalProperties": true
     },
     "HVTResponseOrderDataType": {
@@ -1078,10 +976,7 @@
           }
         }
       },
-      "required": [
-        "NumOrderInfos",
-        "OrderInfo"
-      ],
+      "required": ["NumOrderInfos", "OrderInfo"],
       "additionalProperties": true
     },
     "HVTAccountInfoType": {
@@ -1156,24 +1051,15 @@
               },
               "Type": {
                 "description": "Purpose: [object Object],[object Object]Details: [object Object],[object Object]Comment: [object Object],[object Object]",
-                "enum": [
-                  "Purpose",
-                  "Details",
-                  "Comment"
-                ]
+                "enum": ["Purpose", "Details", "Comment"]
               }
             },
-            "required": [
-              "Type"
-            ],
+            "required": ["Type"],
             "additionalProperties": false
           }
         }
       },
-      "required": [
-        "AccountInfo",
-        "Amount"
-      ],
+      "required": ["AccountInfo", "Amount"],
       "additionalProperties": true
     },
     "HVTOrderFlagsType": {
@@ -1195,11 +1081,7 @@
           "description": "Offset position in the original order file which marks the starting point for the transaction details to be transmitted; applies to the sequential number of a particular order if completeOrderData=false (Proposal for Default=0)."
         }
       },
-      "required": [
-        "completeOrderData",
-        "fetchLimit",
-        "fetchOffset"
-      ],
+      "required": ["completeOrderData", "fetchLimit", "fetchOffset"],
       "additionalProperties": true
     },
     "HVTOrderParamsType": {
@@ -1237,10 +1119,7 @@
           }
         }
       },
-      "required": [
-        "ebics:HVRequestStructure",
-        "OrderFlags"
-      ],
+      "required": ["ebics:HVRequestStructure", "OrderFlags"],
       "additionalProperties": true
     },
     "HVUResponseOrderDataType": {
@@ -1256,9 +1135,7 @@
           }
         }
       },
-      "required": [
-        "OrderDetails"
-      ],
+      "required": ["OrderDetails"],
       "additionalProperties": true
     },
     "HVUOrderDetailsType": {
@@ -1298,13 +1175,7 @@
           "$ref": "#/definitions/String255Type"
         }
       },
-      "required": [
-        "Service",
-        "OrderID",
-        "OrderDataSize",
-        "SigningInfo",
-        "OriginatorInfo"
-      ],
+      "required": ["Service", "OrderID", "OrderDataSize", "SigningInfo", "OriginatorInfo"],
       "additionalProperties": true
     },
     "HVUOrderParamsType": {
@@ -1354,11 +1225,7 @@
           "description": "Anzahl der bereits geleisteten EUs."
         }
       },
-      "required": [
-        "readyToBeSigned",
-        "NumSigRequired",
-        "NumSigDone"
-      ],
+      "required": ["readyToBeSigned", "NumSigRequired", "NumSigDone"],
       "additionalProperties": false
     },
     "HVUOriginatorInfoType": {
@@ -1382,11 +1249,7 @@
           "$ref": "#/definitions/TimestampType"
         }
       },
-      "required": [
-        "PartnerID",
-        "UserID",
-        "Timestamp"
-      ],
+      "required": ["PartnerID", "UserID", "Timestamp"],
       "additionalProperties": true
     },
     "HVZResponseOrderDataType": {
@@ -1402,9 +1265,7 @@
           }
         }
       },
-      "required": [
-        "OrderDetails"
-      ],
+      "required": ["OrderDetails"],
       "additionalProperties": true
     },
     "HVZOrderDetailsType": {
@@ -1460,16 +1321,7 @@
           "$ref": "#/definitions/HVZPaymentOrderDetailsStructure"
         }
       },
-      "required": [
-        "Service",
-        "OrderID",
-        "DataDigest",
-        "OrderDataAvailable",
-        "OrderDataSize",
-        "OrderDetailsAvailable",
-        "SigningInfo",
-        "OriginatorInfo"
-      ],
+      "required": ["Service", "OrderID", "DataDigest", "OrderDataAvailable", "OrderDataSize", "OrderDetailsAvailable", "SigningInfo", "OriginatorInfo"],
       "additionalProperties": true
     },
     "SignerInfoType": {
@@ -1497,12 +1349,7 @@
           "description": "zusätzliche Informationen zu den Berechtigungen des Teilnehmers, der unterzeichnet hat."
         }
       },
-      "required": [
-        "PartnerID",
-        "UserID",
-        "Timestamp",
-        "Permission"
-      ],
+      "required": ["PartnerID", "UserID", "Timestamp", "Permission"],
       "additionalProperties": true
     },
     "UserPermissionType": {
@@ -1530,9 +1377,7 @@
           "$ref": "#/definitions/AuthorisationLevelType"
         }
       },
-      "required": [
-        "AdminOrderType"
-      ],
+      "required": ["AdminOrderType"],
       "additionalProperties": true
     },
     "PartnerInfoType": {
@@ -1562,15 +1407,11 @@
                   {
                     "type": "string",
                     "description": "Information about the customer's accounts.",
-                    "required": [
-                      "ID"
-                    ],
+                    "required": ["ID"],
                     "$ref": "#/definitions/AccountIDType"
                   }
                 ],
-                "required": [
-                  "ID"
-                ],
+                "required": ["ID"],
                 "description": "Identifikationscode des Kontos.",
                 "$ref": "#/definitions/AccountIDType"
               }
@@ -1587,11 +1428,7 @@
           }
         }
       },
-      "required": [
-        "AddressInfo",
-        "BankInfo",
-        "OrderInfo"
-      ],
+      "required": ["AddressInfo", "BankInfo", "OrderInfo"],
       "additionalProperties": false
     },
     "AddressInfoType": {
@@ -1640,9 +1477,7 @@
           }
         }
       },
-      "required": [
-        "HostID"
-      ],
+      "required": ["HostID"],
       "additionalProperties": true
     },
     "UserInfoType": {
@@ -1662,15 +1497,11 @@
                 {
                   "type": "string",
                   "description": "Teilnehmer-ID.",
-                  "required": [
-                    "Status"
-                  ],
+                  "required": ["Status"],
                   "$ref": "#/definitions/UserStatusType"
                 }
               ],
-              "required": [
-                "Status"
-              ],
+              "required": ["Status"],
               "description": "Status des Teilnehmers.",
               "$ref": "#/definitions/UserStatusType"
             }
@@ -1690,10 +1521,7 @@
           }
         }
       },
-      "required": [
-        "UserID",
-        "Permission"
-      ],
+      "required": ["UserID", "Permission"],
       "additionalProperties": true
     },
     "AuthOrderInfoType": {
@@ -1718,10 +1546,7 @@
           "description": "Anzahl erforderlicher EUs (Default=0)."
         }
       },
-      "required": [
-        "AdminOrderType",
-        "Description"
-      ],
+      "required": ["AdminOrderType", "Description"],
       "additionalProperties": true
     },
     "StandardOrderParamsType": {
@@ -1753,17 +1578,11 @@
                   "$ref": "#/definitions/DateType"
                 }
               },
-              "required": [
-                "Start",
-                "End"
-              ],
+              "required": ["Start", "End"],
               "additionalProperties": false
             }
           },
-          "required": [
-            "Start",
-            "End"
-          ],
+          "required": ["Start", "End"],
           "additionalProperties": false
         }
       },
@@ -1791,9 +1610,7 @@
           "$ref": "#/definitions/FileNameStringType"
         }
       },
-      "required": [
-        "Service"
-      ],
+      "required": ["Service"],
       "additionalProperties": false
     },
     "BTUParamsType": {
@@ -1819,9 +1636,7 @@
           "$ref": "#/definitions/FileNameStringType"
         }
       },
-      "required": [
-        "Service"
-      ],
+      "required": ["Service"],
       "additionalProperties": false
     },
     "BTFParamsTyp": {
@@ -1850,9 +1665,7 @@
           "$ref": "#/definitions/FileNameStringType"
         }
       },
-      "required": [
-        "Service"
-      ],
+      "required": ["Service"],
       "additionalProperties": false
     },
     "DateRangeType": {
@@ -1866,10 +1679,7 @@
           "$ref": "#/definitions/DateType"
         }
       },
-      "required": [
-        "Start",
-        "End"
-      ],
+      "required": ["Start", "End"],
       "additionalProperties": false
     },
     "FlagAttribType": {
@@ -1957,10 +1767,7 @@
           "$ref": "#/definitions/MessageType"
         }
       },
-      "required": [
-        "ServiceName",
-        "MsgName"
-      ],
+      "required": ["ServiceName", "MsgName"],
       "additionalProperties": false
     },
     "ContainerFlagType": {
@@ -1972,9 +1779,7 @@
           "$ref": "#/definitions/ContainerStringType"
         }
       },
-      "required": [
-        "containerType"
-      ],
+      "required": ["containerType"],
       "additionalProperties": false
     },
     "SignatureFlagType": {

@@ -2,26 +2,10 @@
   "title": "./ebicsXML/ebics_request_H005.xsd",
   "$schema": "http://json-schema.org/schema#",
   "id": "urn:org:ebics:H005",
-  "description": "[object Object],[object Object]",
+  "description": "Electronic Banking Internet Communication Standard der EBICS SCRL: multi-bank capable interface for internet-based communication.",
   "type": "object",
   "properties": {
-    "annotation": {
-      "documentation": [
-        {
-          "@xml:lang": "de",
-          "#text": "Electronic Banking Internet Communication Standard of the EBICS SCRL: Multibankfähige Schnittstelle zur internetbasierten Kommunikation."
-        },
-        {
-          "@xml:lang": "en",
-          "#text": "Electronic Banking Internet Communication Standard der EBICS SCRL: multi-bank capable interface for internet-based communication."
-        }
-      ]
-    },
     "ebicsRequest": {
-      "anyAttribute": {
-        "@namespace": "##targetNamespace",
-        "@processContents": "strict"
-      },
       "properties": {
         "header": {
           "type": "object",
@@ -29,10 +13,7 @@
           "additionalProperties": false,
           "anyOf": [
             {
-              "required": [
-                "static",
-                "mutable"
-              ],
+              "required": ["static", "mutable"],
               "$ref": "#/definitions/AuthenticationMarker"
             },
             {
@@ -46,10 +27,7 @@
                   "$ref": "#/definitions/MutableHeaderType"
                 }
               },
-              "required": [
-                "static",
-                "mutable"
-              ]
+              "required": ["static", "mutable"]
             }
           ]
         },
@@ -99,9 +77,7 @@
                       "$ref": "#/definitions/DataTransferRequestType"
                     }
                   },
-                  "required": [
-                    "TransferReceipt"
-                  ],
+                  "required": ["TransferReceipt"],
                   "additionalProperties": true,
                   "$ref": "#/definitions/DataTransferRequestType"
                 }
@@ -113,19 +89,11 @@
           "description": "Receipt of transfer."
         }
       },
-      "required": [
-        "header",
-        "ebics:AuthSignature",
-        "body"
-      ],
+      "required": ["header", "ebics:AuthSignature", "body"],
       "additionalProperties": false
-    },
-    "description": "Electronic Banking Internet Communication Standard der EBICS SCRL: multi-bank capable interface for internet-based communication.",
-    "$ref": "#/definitions/VersionAttrGroup"
+    }
   },
-  "required": [
-    "ebicsRequest"
-  ],
+  "required": ["ebicsRequest"],
   "additionalProperties": false,
   "definitions": {
     "StaticHeaderType": {
@@ -169,15 +137,11 @@
                 {
                   "type": "string",
                   "description": "software ID / manufacturer ID / manufacturer's name of the customer's software package.",
-                  "required": [
-                    "Language"
-                  ],
+                  "required": ["Language"],
                   "$ref": "#/definitions/InstituteIDType"
                 }
               ],
-              "required": [
-                "Language"
-              ],
+              "required": ["Language"],
               "description": "ID of the manufacturer / financial institute providing support for the customer's software package.",
               "$ref": "#/definitions/InstituteIDType"
             }
@@ -205,15 +169,11 @@
                     {
                       "type": "string",
                       "description": "Digest value of the public authentication key.",
-                      "required": [
-                        "Version"
-                      ],
+                      "required": ["Version"],
                       "$ref": "#/definitions/AuthenticationVersionType"
                     }
                   ],
-                  "required": [
-                    "Version"
-                  ],
+                  "required": ["Version"],
                   "description": "Version of the algorithm used for authentication.",
                   "$ref": "#/definitions/AuthenticationVersionType"
                 }
@@ -233,15 +193,11 @@
                     {
                       "type": "string",
                       "description": "Digest value of the public encryption key.",
-                      "required": [
-                        "Version"
-                      ],
+                      "required": ["Version"],
                       "$ref": "#/definitions/EncryptionVersionType"
                     }
                   ],
-                  "required": [
-                    "Version"
-                  ],
+                  "required": ["Version"],
                   "description": "Version of the algorithm used for encryption.",
                   "$ref": "#/definitions/EncryptionVersionType"
                 }
@@ -261,27 +217,18 @@
                     {
                       "type": "string",
                       "description": "Digest value of the public signature key.",
-                      "required": [
-                        "Version"
-                      ],
+                      "required": ["Version"],
                       "$ref": "#/definitions/SignatureVersionType"
                     }
                   ],
-                  "required": [
-                    "Version",
-                    "Authentication",
-                    "Encryption"
-                  ],
+                  "required": ["Version", "Authentication", "Encryption"],
                   "description": "Version of the algorithm used for signature creation."
                 }
               ],
               "description": "Digest value of the public signature key."
             }
           },
-          "required": [
-            "Authentication",
-            "Encryption"
-          ],
+          "required": ["Authentication", "Encryption"],
           "additionalProperties": false
         },
         "SecurityMedium": {
@@ -297,17 +244,7 @@
           "$ref": "#/definitions/TransactionIDType"
         }
       },
-      "required": [
-        "HostID",
-        "Nonce",
-        "Timestamp",
-        "PartnerID",
-        "UserID",
-        "OrderDetails",
-        "BankPubKeyDigests",
-        "SecurityMedium",
-        "TransactionID"
-      ],
+      "required": ["HostID", "Nonce", "Timestamp", "PartnerID", "UserID", "OrderDetails", "BankPubKeyDigests", "SecurityMedium", "TransactionID"],
       "additionalProperties": true
     },
     "MutableHeaderType": {
@@ -331,23 +268,17 @@
                 {
                   "type": "string",
                   "description": "contains the number of the segment which is currently being transmitted or requested; mandatory for transaction phase 'Transfer' only.",
-                  "required": [
-                    "lastSegment"
-                  ]
+                  "required": ["lastSegment"]
                 }
               ],
-              "required": [
-                "lastSegment"
-              ],
+              "required": ["lastSegment"],
               "description": "Is this segment meant to be the last one regarding this transmission?"
             }
           ],
           "description": "Is this segment meant to be the last one regarding this transmission?"
         }
       },
-      "required": [
-        "TransactionPhase"
-      ],
+      "required": ["TransactionPhase"],
       "additionalProperties": true
     },
     "StaticHeaderOrderDetailsType": {
@@ -382,10 +313,7 @@
           "$ref": "#/definitions/OrderParams"
         }
       },
-      "required": [
-        "AdminOrderType",
-        "ebics:OrderParams"
-      ],
+      "required": ["AdminOrderType", "ebics:OrderParams"],
       "additionalProperties": false
     }
   }

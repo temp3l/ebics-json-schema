@@ -5,12 +5,6 @@
   "description": "ebics_keymgmt_response_H005.xsd ist das EBICS-Protokollschema für Schlüsselmanagement-Antwortnachrichten (HIA, HPB, HSA, INI).",
   "type": "object",
   "properties": {
-    "annotation": {
-      "documentation": {
-        "@xml:lang": "de",
-        "#text": "Electronic Banking Internet Communication Standard des Zentralen Kreditausschusses (ZKA): Multibankfähige Schnittstelle zur internetbasierten Kommunikation."
-      }
-    },
     "ebicsKeyManagementResponse": {
       "properties": {
         "header": {
@@ -19,10 +13,7 @@
           "additionalProperties": false,
           "anyOf": [
             {
-              "required": [
-                "static",
-                "mutable"
-              ],
+              "required": ["static", "mutable"],
               "$ref": "#/definitions/AuthenticationMarker"
             },
             {
@@ -36,10 +27,7 @@
                   "$ref": "#/definitions/KeyMgmntResponseMutableHeaderType"
                 }
               },
-              "required": [
-                "static",
-                "mutable"
-              ]
+              "required": ["static", "mutable"]
             }
           ]
         },
@@ -92,10 +80,7 @@
                   "description": "enthält Auftragsdaten."
                 }
               },
-              "required": [
-                "DataEncryptionInfo",
-                "OrderData"
-              ],
+              "required": ["DataEncryptionInfo", "OrderData"],
               "additionalProperties": true
             },
             "ReturnCode": {
@@ -143,24 +128,15 @@
               "description": "Zeitstempel der letzten Aktualisierung der Bankparameter; nur in der Initialisierungsphase anzugeben."
             }
           },
-          "required": [
-            "ReturnCode"
-          ],
+          "required": ["ReturnCode"],
           "additionalProperties": false
         }
       },
-      "required": [
-        "header",
-        "body"
-      ],
+      "required": ["header", "body"],
       "additionalProperties": false
-    },
-    "description": "Electronic Banking Internet Communication Standard des Zentralen Kreditausschusses (ZKA): Multibankfähige Schnittstelle zur internetbasierten Kommunikation.",
-    "$ref": "#/definitions/VersionAttrGroup"
+    }
   },
-  "required": [
-    "ebicsKeyManagementResponse"
-  ],
+  "required": ["ebicsKeyManagementResponse"],
   "additionalProperties": false,
   "definitions": {
     "KeyMgmntResponseMutableHeaderType": {
@@ -180,10 +156,7 @@
           "$ref": "#/definitions/ReportTextType"
         }
       },
-      "required": [
-        "ReturnCode",
-        "ReportText"
-      ],
+      "required": ["ReturnCode", "ReportText"],
       "additionalProperties": true
     }
   }
